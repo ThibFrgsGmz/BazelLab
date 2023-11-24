@@ -1,0 +1,19 @@
+# Force the use of Clang for all builds. FuzzTest relies on Clang for sanitizer
+# coverage (https://clang.llvm.org/docs/SanitizerCoverage.html).
+build --action_env=CC=clang
+build --action_env=CXX=clang++
+
+# Use the C++17 standard.
+build --cxxopt=-std=c++17
+
+# Use the builtin crc32 for fast integer hashing.
+build --copt=-mcrc32
+
+# Show everything when running tests.
+test --test_output=streamed
+
+# To create this file, please run:
+#
+#  bazel run @com_google_fuzztest//bazel:setup_configs > fuzztest.bazelrc
+#
+try-import %workspace%/fuzztest.bazelrc
