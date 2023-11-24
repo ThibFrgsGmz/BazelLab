@@ -1,2 +1,4 @@
 # BazelLab
 A space for experimentation designed to explore Bazel's capabilities in a multi-language environment.
+
+This project aims to deepen knowledge of software building with Bazel in a multi-language environment. It allows for experimentation with programming languages such as C++, Python, and Rust. The project explores the benefits of Bazel for managing dependencies and optimizing builds in a diverse framework. Created to facilitate learning and innovation, "BazelLab" offers a chance to enhance programming proficiency and comprehend the intricacies of contemporary build systems, all while remaining in a comfortable and self-directed environment.
