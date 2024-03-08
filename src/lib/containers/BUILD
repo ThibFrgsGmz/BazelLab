@@ -5,12 +5,22 @@ cc_library(
 )
 
 cc_test(
-    name = "circular_buffer_fuzz_test",
-    srcs = ["circular_buffer_fuzz_test.cc"],
+    name = "circular_buffer_test",
+    srcs = ["circular_buffer_test.cc"],
     deps = [
         ":circular_buffer",
-        "@com_google_fuzztest//fuzztest",
-        "@com_google_fuzztest//fuzztest:fuzztest_gtest_main",
-        "@com_google_googletest//:gtest"
+        "//src/tests:gtest_main",
+        "@com_google_googletest//:gtest",
     ],
 )
+
+# cc_test(
+#     name = "circular_buffer_fuzz_test",
+#     srcs = ["circular_buffer_fuzz_test.cc"],
+#     deps = [
+#         ":circular_buffer",
+#         "@com_google_fuzztest//fuzztest",
+#         "@com_google_fuzztest//fuzztest:fuzztest_gtest_main",
+#         "@com_google_googletest//:gtest",
+#     ],
+# )
