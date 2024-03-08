@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "bazelbuild.vscode-bazel",
+        "eamodio.gitlens",
+        "ms-vscode.cpptools",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools-themes",
+        "nvidia.bluebazel",
+        "rjmacarthy.twinny"
+    ]
+}
