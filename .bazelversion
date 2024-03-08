@@ -1,9 +1,0 @@
-6.4.0
-# This document, which is fundamental to the configuration of the development ecosystem,
-# plays a pivotal role in the coordination of the Bazelisk and Bazel tools. 
-# The first line of this file, inserted as an exergue, imperatively dictates the specific 
-# version of Bazel required to orchestrate the construction and testing of this code 
-# repository in an appropriate manner.
-# This setting ensures crucial homogeneity, facilitating seamless congruence between local 
-# development environments and continuous integration systems, avoiding any risk of disparity 
-# or version incompatibility.

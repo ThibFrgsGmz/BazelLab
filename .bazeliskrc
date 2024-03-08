@@ -1,0 +1,51 @@
+# Configuration de Bazelisk
+#
+# Bazelisk est un outil essentiel pour maintenir la cohérence et la compatibilité des versions de Bazel
+# utilisées dans un environnement de développement. Ce fichier de configuration, nommé .bazeliskrc,
+# joue un rôle central dans cette coordination en permettant de définir les paramètres de configuration
+# pour Bazelisk.
+#
+# Ce document est fondamental pour garantir la stabilité et la fiabilité du processus de développement.
+# Il sert de point de référence pour spécifier la version exacte de Bazel requise pour construire et tester
+# le code dans ce référentiel de manière appropriée. En fixant cette version, le fichier .bazeliskrc assure
+# une homogénéité cruciale entre les environnements de développement locaux et les systèmes d'intégration continue,
+# évitant ainsi tout risque de disparité ou d'incompatibilité de version.
+#
+# L'utilisation de Bazelisk avec une configuration correctement définie garantit une expérience de développement
+# fluide et cohérente pour tous les membres de l'équipe. Les problèmes potentiels liés à des versions de Bazel
+# différentes entre les environnements de développement individuels sont évités, ce qui simplifie le processus
+# de collaboration et de maintenance du code.
+#
+# En utilisant ce fichier de configuration, les développeurs peuvent également définir des options par défaut
+# pour Bazelisk, telles que la vérification automatique des mises à jour de Bazel, l'ignorance des fichiers
+# .bazelversion locaux, ou encore la personnalisation des URL de téléchargement de Bazel.
+#
+# Pour utiliser ce fichier de configuration, il doit être placé à la racine de votre projet.
+# Bazelisk le détectera automatiquement et appliquera les paramètres de configuration définis ici lors de
+# l'utilisation de Bazelisk.
+#
+
+# Exemple de configuration de Bazelisk
+
+# Définir la version de Bazel à utiliser par défaut
+version: latest
+
+# Configuration des options par défaut pour Bazelisk
+options:
+  # Exemple d'activation de l'option pour vérifier automatiquement les mises à jour de Bazel
+  update-check: true
+
+  # Ignorer les vérifications de version spécifiques dans .bazelversion
+  # ignore-local-rcs: true
+
+# Ignorer les fichiers .bazelversion dans les sous-répertoires
+ignore-version-files: true
+
+# Ignorer les mises à jour de Bazelisk
+# ignore-bazel-updates: true
+
+# Désactiver le téléchargement automatique de Bazel
+# ignore-default-bazelisk: true
+
+# Utiliser une URL de téléchargement personnalisée pour Bazel
+# custom-url: https://example.com/path/to/custom/bazel
