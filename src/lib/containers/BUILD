@@ -1,3 +1,5 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
 cc_library(
     name = "circular_buffer",
     srcs = ["circular_buffer.cc"],
