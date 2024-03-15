@@ -1,20 +1,11 @@
-BasedOnStyle: LLVM
-IndentWidth: 4
-
-IncludeBlocks: Regroup
-IncludeCategories:
-  - Regex: '^".*'
-    Priority: 1
-  - Regex: '^<(async|conc|container|cib|flow|interrupt|log|lookup|match|msg|safe|sc|seq)/.*'
-    Priority: 4
-  - Regex: '^<stdx/.*'
-    Priority: 8
-  - Regex: '^<(boost|catch2|fmt|gmock|gtest|rapidcheck)/.*'
-    Priority: 9
-  - Regex: '^<GUnit.h>'
-    Priority: 9
-  - Regex: '<([a-z_])+>'
-    Priority: 10
+BasedOnStyle: Google
+AllowShortBlocksOnASingleLine: 'false'
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: 'false'
+DerivePointerAlignment: 'false'
+ExperimentalAutoDetectBinPacking: 'false'
+FixNamespaceComments: 'true'
+PointerAlignment: Left
 
 QualifierAlignment: Custom
 QualifierOrder: ['constexpr', 'static', 'inline', 'type', 'const', 'volatile']

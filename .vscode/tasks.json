@@ -1,19 +1,19 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "bazel-build",
-            "type": "shell",
-            "command": "bazel",
-            "args": [
-                "build",
-                "//:<your-target>"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "bazel-build",
+      "type": "shell",
+      "command": "bazel",
+      "args": [
+        "build",
+        "//:<your-target>"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
 }

@@ -1,10 +1,40 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 
+
+default_language_version:
+  python: python3 # Defaults to python2, so override it.
+
 repos:
   # Check formatting and lint for starlark code
   - repo: https://github.com/keith/pre-commit-buildifier
-    rev: 6.3.3
+    rev: e5dd9b832006b183d0428627a0b28412b940054c  # frozen: 6.4.0
     hooks:
       - id: buildifier
       - id: buildifier-lint
+  # Check C/C++ code formatting using clang-format
+  - repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: bee96db7e78fd9b23d3d2e0e5141e23dd42afffa  # frozen: v18.1.1
+    hooks:
+      - id: clang-format
+        args: ["-style=file"]  # Adjust arguments as needed
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: c4a0b883114b00d8d76b479c820ce7950211c99b # frozen: v4.5.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-symlinks
+        exclude: ^bazel-execroot$
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+      - id: trailing-whitespace
+  - repo: https://github.com/google/pre-commit-tool-hooks
+    rev: e006c8ab09f96ec32ba728b488ea5d17e1f8f6c0 # frozen: v1.2.4
+    hooks:
+      - id: check-google-doc-style
+      - id: markdown-toc

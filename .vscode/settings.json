@@ -1,32 +1,32 @@
 {
-    "files.associations": {
-        "*.h": "cpp",
-        "*.hpp": "cpp",
-        "*.cc": "cpp"
-    },
-    "C_Cpp.default.cppStandard": "c++23",
-    "C_Cpp.default.compilerPath": "/usr/bin/g++",
-    "C_Cpp.default.intelliSenseMode": "gcc-x64",
-    "C_Cpp.default.includePath": [
-        "${workspaceFolder}/**",
-        "${workspaceFolder}/bazel-<project-name>/external/**"
-    ],
-    "C_Cpp.default.browse.path": [
-        "${workspaceFolder}",
-        "${workspaceFolder}/bazel-<project-name>/external/**"
-    ],
-    "C_Cpp.default.defines": [],
-    "C_Cpp.errorSquiggles": "enabled",
-    "C_Cpp.formatting": "clangFormat",
-    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
-    "bazel.buildifierExecutable": "/home/life/code/buildifier",
-    "bazel.buildifierFixOnFormat": true,
-    "editor.rulers": [
-        80,
-        120
-    ],
-    "editor.formatOnSave": true,
-    "editor.tabSize": 4,
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true
+  "files.associations": {
+    "*.h": "cpp",
+    "*.hpp": "cpp",
+    "*.cc": "cpp"
+  },
+  "C_Cpp.default.cppStandard": "c++23",
+  "C_Cpp.default.compilerPath": "/usr/bin/g++",
+  "C_Cpp.default.intelliSenseMode": "gcc-x64",
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/**",
+    "${workspaceFolder}/bazel-<project-name>/external/**"
+  ],
+  "C_Cpp.default.browse.path": [
+    "${workspaceFolder}",
+    "${workspaceFolder}/bazel-<project-name>/external/**"
+  ],
+  "C_Cpp.default.defines": [],
+  "C_Cpp.errorSquiggles": "enabled",
+  "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
+  "bazel.buildifierExecutable": "/home/life/code/buildifier",
+  "bazel.buildifierFixOnFormat": true,
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.formatOnSave": true,
+  "editor.tabSize": 4,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true
 }

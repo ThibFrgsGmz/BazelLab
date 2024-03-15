@@ -29,4 +29,3 @@ try-import %workspace%/fuzztest.bazelrc
 # Allow users to override any of the flags desired by importing a user-specific
 # RC file here if present.
 try-import %workspace%/user.bazelrc
-

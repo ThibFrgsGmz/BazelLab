@@ -39,3 +39,39 @@ Run bazel version to ensure that Bazelisk has been correctly installed and is op
 
 3. Usage:
 Utilize the bazel command as usual in your build processes. Bazelisk will automatically manage the Bazel version, aligning with the specifications in your project.
+
+
+# pre-commit
+
+Ce projet utilise pre-commit pour automatiser les contrôles de qualité du code avant de valider les modifications. pre-commit est un outil qui vous permet d'exécuter automatiquement une série de contrôles (hooks) sur vos fichiers à chaque validation. Cela permet de s'assurer que le code soumis respecte les standards de qualité définis dans le projet.
+
+## Configuration
+
+La configuration de pre-commit est définie dans le fichier .pre-commit-config.yaml à la racine du projet. Ce fichier spécifie les hooks à exécuter et la manière de les exécuter. Pour installer et configurer pre-commit localement, il suffit d'exécuter la commande suivante :
+
+```sh
+pre-commit install
+```
+
+Ceci installera les hooks pre-commit dans votre dépôt local et les exécutera automatiquement à chaque validation.
+
+## Mise à jour et exécution des hooks
+
+Pour mettre à jour les hooks de pre-commit et les exécuter sur tous les fichiers du projet, vous pouvez utiliser la commande suivante :
+
+
+```sh
+pre-commit autoupdate --freeze && pre-commit run -a
+```
+
+Cela mettra à jour les crochets de pré-commission selon la configuration spécifiée dans votre fichier .pre-commit-config.yaml et exécutera ensuite ces crochets sur tous les fichiers du projet.
+
+## Exécuter avec Bazel
+
+Pour exécuter les hooks pre-commit avec Bazel, utilisez la commande suivante :
+
+```sh
+bazel run //scripts:lint
+```
+
+Cette commande exécutera les crochets de pré-commission spécifiés dans votre configuration de pré-commission à l'aide de Bazel. Assurez-vous que Bazel est correctement configuré et installé sur votre système avant d'exécuter cette commande.

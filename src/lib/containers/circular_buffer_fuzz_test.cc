@@ -3,7 +3,7 @@
 #include "gtest/gtest.h"
 
 /// Fuzz test for CircularBuffer class.
-void fuzz_circular_buffer(const std::vector<int>& inputs) {
+void fuzz_circular_buffer(std::vector<int> const& inputs) {
   CircularBuffer buffer;
   for (auto value : inputs) {
     // Simulate some operations based on value
