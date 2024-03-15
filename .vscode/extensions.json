@@ -6,7 +6,8 @@
     "llvm-vs-code-extensions.vscode-clangd",
     "ms-vscode.cpptools-extension-pack",
     "ms-vscode.cpptools-themes",
-    "nvidia.bluebazel",
-    "rjmacarthy.twinny"
+    "rjmacarthy.twinny",
+    "xaver.clang-format",
+    "matepek.testmate-cpp-legacy"
   ]
 }

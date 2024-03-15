@@ -22,11 +22,10 @@
   "bazel.buildifierExecutable": "/home/life/code/buildifier",
   "bazel.buildifierFixOnFormat": true,
   "editor.rulers": [
-    80,
-    120
+    80
   ],
   "editor.formatOnSave": true,
   "editor.tabSize": 4,
   "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true
+  "files.trimTrailingWhitespace": true,
 }
