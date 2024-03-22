@@ -21,32 +21,16 @@ http_archive = use_repo_rule(
     "http_archive",
 )
 
+bazel_dep(name = "rules_cc", version = "0.0.9")
+
 # Déclaration des dépendances
 bazel_dep(name = "bazel_skylib", version = "1.5.0")
-bazel_dep(
-    name = "abseil-cpp",
-    version = "20240116.0",
-    repo_name = "com_google_absl",
-)
-bazel_dep(
-    name = "re2",
-    version = "2024-02-01",
-    repo_name = "com_googlesource_code_re2",
-)
-bazel_dep(
-    name = "googletest",
-    version = "1.14.0.bcr.1",
-    repo_name = "com_google_googletest",
-)
-
+bazel_dep(name = "abseil-cpp", version = "20240116.1")
+bazel_dep(name = "re2", version = "2024-03-01")
+bazel_dep(name = "googletest", version = "1.14.0.bcr.1")
 google_benchmark_version = "1.8.3"
 
-# Déclaration de la dépendance Google Benchmark
-bazel_dep(
-    name = "google_benchmark",
-    version = google_benchmark_version,
-    repo_name = "com_github_google_benchmark",
-)
+bazel_dep(name = "google_benchmark", version = google_benchmark_version)
 
 # Déclaration de la dépendance Bazel Clang Tidy
 clang_tidy_version = "d2aecc583d14c9554febeab185833c1e8cce5384"
@@ -66,4 +50,12 @@ http_archive(
     name = "com_google_fuzztest",
     strip_prefix = "fuzztest-" + FUZZTEST_COMMIT,
     url = "https://github.com/google/fuzztest/archive/" + FUZZTEST_COMMIT + ".zip",
+)
+
+http_archive(
+    name = "com_mpusz_mp_units",
+    build_file = "//third_party/mp-units:BUILD.mp-units.bazel",
+    sha256 = "a42057492f5a8e80442cf13602b97bb48b9c3a408bc91bdb60d86aadc84c95cc",
+    strip_prefix = "mp-units-2.1.0",
+    url = "https://github.com/mpusz/mp-units/archive/refs/tags/v2.1.0.tar.gz",
 )

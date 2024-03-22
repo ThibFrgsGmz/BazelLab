@@ -8,7 +8,7 @@ cc_test(
     deps = [
         "@com_google_fuzztest//fuzztest",
         "@com_google_fuzztest//fuzztest:fuzztest_gtest_main",
-        "@com_google_googletest//:gtest",
+        "@googletest//:gtest",
     ],
 )
 
@@ -17,6 +17,6 @@ cc_library(
     testonly = True,
     srcs = ["gtest_main.cc"],
     deps = [
-        "@com_google_googletest//:gtest",
+        "@googletest//:gtest",
     ],
 )

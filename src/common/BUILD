@@ -3,6 +3,6 @@ cc_binary(
     testonly = True,
     srcs = ["test_bench.cpp"],
     deps = [
-        "@com_github_google_benchmark//:benchmark_main",
+        "@google_benchmark//:benchmark_main",
     ],
 )
