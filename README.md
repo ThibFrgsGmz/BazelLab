@@ -78,3 +78,15 @@ bazel run //scripts:lint
 ```
 
 Cette commande exécutera les crochets de pré-commission spécifiés dans votre configuration de pré-commission à l'aide de Bazel. Assurez-vous que Bazel est correctement configuré et installé sur votre système avant d'exécuter cette commande.
+
+## Génération de la base de données de compilation avec Hedron
+
+Hedron est un outil utile pour générer une base de données de compilation (compile database) à partir de projets Bazel. Cette base de données est essentielle pour l'intégration de Bazel avec des outils externes tels que les analyseurs statiques de code et les éditeurs de texte pour une meilleure prise en charge du développement.
+
+Pour utiliser Hedron et générer une base de données de compilation exécuter simplement la commande:
+
+```sh
+bazel run :refresh_compile_commands
+```
+
+Cela générera la base de données de compilation dans votre répertoire de travail.
