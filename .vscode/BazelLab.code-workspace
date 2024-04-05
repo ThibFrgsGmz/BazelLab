@@ -1,0 +1,122 @@
+{
+	// This is a checked-in VSCode workspace configuration file that can be used
+	// instead of directly opening $FUCHSIA_DIR in VSCode.
+	//
+	// It's an opt-in workspace configuration that contains settings for:
+	//  - vscode itself
+	//  - LSP settings for working correctly with the fuchsia.git checkout
+	//  - etc.
+	//
+	// In terms of precedence, VSCode uses the following order in which settings
+	// are applied (merged together).
+	//
+	//  0) default settings
+	//  1) user's settings
+	//  2) remote machine settings
+	//  3) workspace settings  (this file)
+	//  4) workspace folder settings
+	//
+	//
+	// For details, see:
+	// https://code.visualstudio.com/docs/getstarted/settings#_settings-precedence
+	// Liste des dossiers du workspace
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	// Extensions recommandées
+	"extensions": {
+		"recommendations": [
+			"bazelbuild.vscode-bazel",
+			"eamodio.gitlens",
+			"ms-vscode.cpptools",
+			"llvm-vs-code-extensions.vscode-clangd",
+			"ms-vscode.cpptools-extension-pack",
+			"ms-vscode.cpptools-themes",
+			"rjmacarthy.twinny",
+			"xaver.clang-format",
+			"matepek.testmate-cpp-legacy"
+		],
+		"unwantedRecommendations": []
+	},
+	// Configurations de lancement
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch Bazel Build",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${workspaceFolder}/bazel-bin/<your-target-path>",
+				"args": [],
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder}",
+				"environment": [],
+				"externalConsole": false,
+				"MIMode": "gdb",
+				"setupCommands": [
+					{
+						"description": "Enable pretty-printing for gdb",
+						"text": "-enable-pretty-printing",
+						"ignoreFailures": true
+					}
+				],
+				"preLaunchTask": "bazel-build",
+				"miDebuggerPath": "/usr/bin/gdb"
+			}
+		]
+	},
+	// Paramètres de l'éditeur
+	"settings": {
+		"files.associations": {
+			"*.h": "cpp",
+			"*.hpp": "cpp",
+			"*.cc": "cpp"
+		},
+		"C_Cpp.default.cppStandard": "c++23",
+		"C_Cpp.default.compilerPath": "/usr/bin/g++",
+		"C_Cpp.default.intelliSenseMode": "gcc-x64",
+		"C_Cpp.default.includePath": [
+			"${workspaceFolder}/**",
+			"${workspaceFolder}/bazel-<project-name>/external/**"
+		],
+		"C_Cpp.default.browse.path": [
+			"${workspaceFolder}",
+			"${workspaceFolder}/bazel-<project-name>/external/**"
+		],
+		"C_Cpp.default.defines": [],
+		"C_Cpp.errorSquiggles": "enabled",
+		"C_Cpp.formatting": "clangFormat",
+		"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
+		"bazel.buildifierExecutable": "/home/life/code/buildifier",
+		"bazel.buildifierFixOnFormat": true,
+		"editor.rulers": [
+			80
+		],
+		"editor.formatOnSave": true,
+		"editor.tabSize": 4,
+		"files.insertFinalNewline": true,
+		"files.trimTrailingWhitespace": true
+	},
+	// Tâches de construction
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "bazel-build",
+				"type": "shell",
+				"command": "bazel",
+				"args": [
+					"build",
+					"//:<your-target>"
+				],
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				},
+				"problemMatcher": []
+			}
+		]
+	}
+}
