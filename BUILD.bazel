@@ -23,20 +23,3 @@ refresh_compile_commands(
     # As are additional targets (+) and subtractions (-), like in bazel query https://docs.bazel.build/versions/main/query.html#expressions
     # And if you're working on a header-only library, specify a test or binary target that compiles it.
 )
-
-
-# load("@python_versions//3.10:defs.bzl", compile_pip_requirements_3_10 = "compile_pip_requirements")
-
-# # This stanza calls a rule that generates targets for managing pip dependencies
-# # with pip-compile.
-# compile_pip_requirements_3_10(
-#     name = "requirements_3_10",
-#     timeout = "moderate",
-#     src = "requirements.in",
-#     requirements_txt = "requirements_lock_3_10.txt",
-# )
-
-# # Load the starlark macro which will define your dependencies.
-# install_deps = use_extension("@my_deps//:requirements.bzl", "install_deps")
-# # Call it to define repos for your requirements.
-# install_deps()

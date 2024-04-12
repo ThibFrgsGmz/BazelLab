@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 6,
-  "moduleFileHash": "f474c18a49469d37ba81854a723eed46af9b6bebf95b1fa64226615a7d7260e1",
+  "moduleFileHash": "5fd0e8a1a3b7395693ed10a3f537c4513cba1fb1096c488e8513c58053ee76e5",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -22,7 +22,9 @@
       "key": "<root>",
       "repoName": "bazel_lab",
       "executionPlatformsToRegister": [],
-      "toolchainsToRegister": [],
+      "toolchainsToRegister": [
+        "@pythons_hub//:all"
+      ],
       "extensionUsages": [
         {
           "extensionBzlFile": "//:MODULE.bazel",
@@ -75,6 +77,70 @@
           ],
           "hasDevUseExtension": false,
           "hasNonDevUseExtension": true
+        },
+        {
+          "extensionBzlFile": "@rules_python//python/extensions:python.bzl",
+          "extensionName": "python",
+          "usingModule": "<root>",
+          "location": {
+            "file": "@@//:MODULE.bazel",
+            "line": 65,
+            "column": 23
+          },
+          "imports": {
+            "python_versions": "python_versions",
+            "pythons_hub": "pythons_hub"
+          },
+          "devImports": [],
+          "tags": [
+            {
+              "tagName": "toolchain",
+              "attributeValues": {
+                "is_default": true,
+                "python_version": "3.12"
+              },
+              "devDependency": false,
+              "location": {
+                "file": "@@//:MODULE.bazel",
+                "line": 66,
+                "column": 17
+              }
+            }
+          ],
+          "hasDevUseExtension": false,
+          "hasNonDevUseExtension": true
+        },
+        {
+          "extensionBzlFile": "@rules_python//python/extensions:pip.bzl",
+          "extensionName": "pip",
+          "usingModule": "<root>",
+          "location": {
+            "file": "@@//:MODULE.bazel",
+            "line": 75,
+            "column": 20
+          },
+          "imports": {
+            "pip_deps": "pip_deps"
+          },
+          "devImports": [],
+          "tags": [
+            {
+              "tagName": "parse",
+              "attributeValues": {
+                "hub_name": "pip_deps",
+                "python_version": "3.12",
+                "requirements_lock": "//thrid_party/pip/;requirements_lock.txt"
+              },
+              "devDependency": false,
+              "location": {
+                "file": "@@//:MODULE.bazel",
+                "line": 76,
+                "column": 10
+              }
+            }
+          ],
+          "hasDevUseExtension": false,
+          "hasNonDevUseExtension": true
         }
       ],
       "deps": {
@@ -85,6 +151,7 @@
         "googletest": "googletest@1.14.0.bcr.1",
         "google_benchmark": "google_benchmark@1.8.3",
         "hedron_compile_commands": "hedron_compile_commands@_",
+        "rules_python": "rules_python@0.31.0",
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_"
       }
@@ -386,6 +453,116 @@
         "local_config_platform": "local_config_platform@_"
       }
     },
+    "rules_python@0.31.0": {
+      "name": "rules_python",
+      "version": "0.31.0",
+      "key": "rules_python@0.31.0",
+      "repoName": "rules_python",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [
+        "@pythons_hub//:all"
+      ],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@rules_python//python/private/bzlmod:internal_deps.bzl",
+          "extensionName": "internal_deps",
+          "usingModule": "rules_python@0.31.0",
+          "location": {
+            "file": "https://bcr.bazel.build/modules/rules_python/0.31.0/MODULE.bazel",
+            "line": 15,
+            "column": 30
+          },
+          "imports": {
+            "rules_python_internal": "rules_python_internal",
+            "pypi__build": "pypi__build",
+            "pypi__click": "pypi__click",
+            "pypi__colorama": "pypi__colorama",
+            "pypi__importlib_metadata": "pypi__importlib_metadata",
+            "pypi__installer": "pypi__installer",
+            "pypi__more_itertools": "pypi__more_itertools",
+            "pypi__packaging": "pypi__packaging",
+            "pypi__pep517": "pypi__pep517",
+            "pypi__pip": "pypi__pip",
+            "pypi__pip_tools": "pypi__pip_tools",
+            "pypi__pyproject_hooks": "pypi__pyproject_hooks",
+            "pypi__setuptools": "pypi__setuptools",
+            "pypi__tomli": "pypi__tomli",
+            "pypi__wheel": "pypi__wheel",
+            "pypi__zipp": "pypi__zipp"
+          },
+          "devImports": [],
+          "tags": [
+            {
+              "tagName": "install",
+              "attributeValues": {},
+              "devDependency": false,
+              "location": {
+                "file": "https://bcr.bazel.build/modules/rules_python/0.31.0/MODULE.bazel",
+                "line": 16,
+                "column": 22
+              }
+            }
+          ],
+          "hasDevUseExtension": false,
+          "hasNonDevUseExtension": true
+        },
+        {
+          "extensionBzlFile": "@rules_python//python/extensions:python.bzl",
+          "extensionName": "python",
+          "usingModule": "rules_python@0.31.0",
+          "location": {
+            "file": "https://bcr.bazel.build/modules/rules_python/0.31.0/MODULE.bazel",
+            "line": 41,
+            "column": 23
+          },
+          "imports": {
+            "pythons_hub": "pythons_hub"
+          },
+          "devImports": [],
+          "tags": [
+            {
+              "tagName": "toolchain",
+              "attributeValues": {
+                "is_default": true,
+                "python_version": "3.11"
+              },
+              "devDependency": false,
+              "location": {
+                "file": "https://bcr.bazel.build/modules/rules_python/0.31.0/MODULE.bazel",
+                "line": 47,
+                "column": 17
+              }
+            }
+          ],
+          "hasDevUseExtension": false,
+          "hasNonDevUseExtension": true
+        }
+      ],
+      "deps": {
+        "bazel_features": "bazel_features@1.1.1",
+        "bazel_skylib": "bazel_skylib@1.5.0",
+        "platforms": "platforms@0.0.8",
+        "rules_proto": "rules_proto@5.3.0-21.7",
+        "com_google_protobuf": "protobuf@21.7",
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_"
+      },
+      "repoSpec": {
+        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+        "ruleClassName": "http_archive",
+        "attributes": {
+          "urls": [
+            "https://github.com/bazelbuild/rules_python/releases/download/0.31.0/rules_python-0.31.0.tar.gz"
+          ],
+          "integrity": "sha256-xovcT77CXeW1STuIGc/Id8TqKZwNyxXCRMWgAgjN4xE=",
+          "strip_prefix": "rules_python-0.31.0",
+          "remote_patches": {
+            "https://bcr.bazel.build/modules/rules_python/0.31.0/patches/module_dot_bazel_version.patch": "sha256-j2KF6j66J2fRAGtc56Zj7Hp1dTGqOWPAR3+IODr0oLQ="
+          },
+          "remote_patch_strip": 1
+        }
+      }
+    },
     "bazel_tools@_": {
       "name": "bazel_tools",
       "version": "",
@@ -629,116 +806,6 @@
         }
       }
     },
-    "rules_python@0.31.0": {
-      "name": "rules_python",
-      "version": "0.31.0",
-      "key": "rules_python@0.31.0",
-      "repoName": "rules_python",
-      "executionPlatformsToRegister": [],
-      "toolchainsToRegister": [
-        "@pythons_hub//:all"
-      ],
-      "extensionUsages": [
-        {
-          "extensionBzlFile": "@rules_python//python/private/bzlmod:internal_deps.bzl",
-          "extensionName": "internal_deps",
-          "usingModule": "rules_python@0.31.0",
-          "location": {
-            "file": "https://bcr.bazel.build/modules/rules_python/0.31.0/MODULE.bazel",
-            "line": 15,
-            "column": 30
-          },
-          "imports": {
-            "rules_python_internal": "rules_python_internal",
-            "pypi__build": "pypi__build",
-            "pypi__click": "pypi__click",
-            "pypi__colorama": "pypi__colorama",
-            "pypi__importlib_metadata": "pypi__importlib_metadata",
-            "pypi__installer": "pypi__installer",
-            "pypi__more_itertools": "pypi__more_itertools",
-            "pypi__packaging": "pypi__packaging",
-            "pypi__pep517": "pypi__pep517",
-            "pypi__pip": "pypi__pip",
-            "pypi__pip_tools": "pypi__pip_tools",
-            "pypi__pyproject_hooks": "pypi__pyproject_hooks",
-            "pypi__setuptools": "pypi__setuptools",
-            "pypi__tomli": "pypi__tomli",
-            "pypi__wheel": "pypi__wheel",
-            "pypi__zipp": "pypi__zipp"
-          },
-          "devImports": [],
-          "tags": [
-            {
-              "tagName": "install",
-              "attributeValues": {},
-              "devDependency": false,
-              "location": {
-                "file": "https://bcr.bazel.build/modules/rules_python/0.31.0/MODULE.bazel",
-                "line": 16,
-                "column": 22
-              }
-            }
-          ],
-          "hasDevUseExtension": false,
-          "hasNonDevUseExtension": true
-        },
-        {
-          "extensionBzlFile": "@rules_python//python/extensions:python.bzl",
-          "extensionName": "python",
-          "usingModule": "rules_python@0.31.0",
-          "location": {
-            "file": "https://bcr.bazel.build/modules/rules_python/0.31.0/MODULE.bazel",
-            "line": 41,
-            "column": 23
-          },
-          "imports": {
-            "pythons_hub": "pythons_hub"
-          },
-          "devImports": [],
-          "tags": [
-            {
-              "tagName": "toolchain",
-              "attributeValues": {
-                "is_default": true,
-                "python_version": "3.11"
-              },
-              "devDependency": false,
-              "location": {
-                "file": "https://bcr.bazel.build/modules/rules_python/0.31.0/MODULE.bazel",
-                "line": 47,
-                "column": 17
-              }
-            }
-          ],
-          "hasDevUseExtension": false,
-          "hasNonDevUseExtension": true
-        }
-      ],
-      "deps": {
-        "bazel_features": "bazel_features@1.1.1",
-        "bazel_skylib": "bazel_skylib@1.5.0",
-        "platforms": "platforms@0.0.8",
-        "rules_proto": "rules_proto@5.3.0-21.7",
-        "com_google_protobuf": "protobuf@21.7",
-        "bazel_tools": "bazel_tools@_",
-        "local_config_platform": "local_config_platform@_"
-      },
-      "repoSpec": {
-        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-        "ruleClassName": "http_archive",
-        "attributes": {
-          "urls": [
-            "https://github.com/bazelbuild/rules_python/releases/download/0.31.0/rules_python-0.31.0.tar.gz"
-          ],
-          "integrity": "sha256-xovcT77CXeW1STuIGc/Id8TqKZwNyxXCRMWgAgjN4xE=",
-          "strip_prefix": "rules_python-0.31.0",
-          "remote_patches": {
-            "https://bcr.bazel.build/modules/rules_python/0.31.0/patches/module_dot_bazel_version.patch": "sha256-j2KF6j66J2fRAGtc56Zj7Hp1dTGqOWPAR3+IODr0oLQ="
-          },
-          "remote_patch_strip": 1
-        }
-      }
-    },
     "pybind11_bazel@2.11.1.bzl.2": {
       "name": "pybind11_bazel",
       "version": "2.11.1.bzl.2",
@@ -886,6 +953,166 @@
         }
       }
     },
+    "bazel_features@1.1.1": {
+      "name": "bazel_features",
+      "version": "1.1.1",
+      "key": "bazel_features@1.1.1",
+      "repoName": "bazel_features",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@bazel_features//private:extensions.bzl",
+          "extensionName": "version_extension",
+          "usingModule": "bazel_features@1.1.1",
+          "location": {
+            "file": "https://bcr.bazel.build/modules/bazel_features/1.1.1/MODULE.bazel",
+            "line": 6,
+            "column": 24
+          },
+          "imports": {
+            "bazel_features_globals": "bazel_features_globals",
+            "bazel_features_version": "bazel_features_version"
+          },
+          "devImports": [],
+          "tags": [],
+          "hasDevUseExtension": false,
+          "hasNonDevUseExtension": true
+        }
+      ],
+      "deps": {
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_"
+      },
+      "repoSpec": {
+        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+        "ruleClassName": "http_archive",
+        "attributes": {
+          "urls": [
+            "https://github.com/bazel-contrib/bazel_features/releases/download/v1.1.1/bazel_features-v1.1.1.tar.gz"
+          ],
+          "integrity": "sha256-YsJuQn5cvHUQJERpJ2IuOYqdzfMsZDJSOIFXCdEcEag=",
+          "strip_prefix": "bazel_features-1.1.1",
+          "remote_patches": {
+            "https://bcr.bazel.build/modules/bazel_features/1.1.1/patches/module_dot_bazel_version.patch": "sha256-+56MAEsc7bYN/Pzhn252ZQUxiRzZg9bynXj1qpsmCYs="
+          },
+          "remote_patch_strip": 1
+        }
+      }
+    },
+    "rules_proto@5.3.0-21.7": {
+      "name": "rules_proto",
+      "version": "5.3.0-21.7",
+      "key": "rules_proto@5.3.0-21.7",
+      "repoName": "rules_proto",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [],
+      "deps": {
+        "bazel_skylib": "bazel_skylib@1.5.0",
+        "com_google_protobuf": "protobuf@21.7",
+        "rules_cc": "rules_cc@0.0.9",
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_"
+      },
+      "repoSpec": {
+        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+        "ruleClassName": "http_archive",
+        "attributes": {
+          "urls": [
+            "https://github.com/bazelbuild/rules_proto/archive/refs/tags/5.3.0-21.7.tar.gz"
+          ],
+          "integrity": "sha256-3D+yBqLLNEG0heseQjFlsjEjWh6psDG0Qzz3vB+kYN0=",
+          "strip_prefix": "rules_proto-5.3.0-21.7",
+          "remote_patches": {},
+          "remote_patch_strip": 0
+        }
+      }
+    },
+    "protobuf@21.7": {
+      "name": "protobuf",
+      "version": "21.7",
+      "key": "protobuf@21.7",
+      "repoName": "protobuf",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@rules_jvm_external//:extensions.bzl",
+          "extensionName": "maven",
+          "usingModule": "protobuf@21.7",
+          "location": {
+            "file": "https://bcr.bazel.build/modules/protobuf/21.7/MODULE.bazel",
+            "line": 22,
+            "column": 22
+          },
+          "imports": {
+            "maven": "maven"
+          },
+          "devImports": [],
+          "tags": [
+            {
+              "tagName": "install",
+              "attributeValues": {
+                "name": "maven",
+                "artifacts": [
+                  "com.google.code.findbugs:jsr305:3.0.2",
+                  "com.google.code.gson:gson:2.8.9",
+                  "com.google.errorprone:error_prone_annotations:2.3.2",
+                  "com.google.j2objc:j2objc-annotations:1.3",
+                  "com.google.guava:guava:31.1-jre",
+                  "com.google.guava:guava-testlib:31.1-jre",
+                  "com.google.truth:truth:1.1.2",
+                  "junit:junit:4.13.2",
+                  "org.mockito:mockito-core:4.3.1"
+                ]
+              },
+              "devDependency": false,
+              "location": {
+                "file": "https://bcr.bazel.build/modules/protobuf/21.7/MODULE.bazel",
+                "line": 24,
+                "column": 14
+              }
+            }
+          ],
+          "hasDevUseExtension": false,
+          "hasNonDevUseExtension": true
+        }
+      ],
+      "deps": {
+        "bazel_skylib": "bazel_skylib@1.5.0",
+        "rules_python": "rules_python@0.31.0",
+        "rules_cc": "rules_cc@0.0.9",
+        "rules_proto": "rules_proto@5.3.0-21.7",
+        "rules_java": "rules_java@7.4.0",
+        "rules_pkg": "rules_pkg@0.7.0",
+        "com_google_abseil": "abseil-cpp@20240116.1",
+        "zlib": "zlib@1.3",
+        "upb": "upb@0.0.0-20220923-a547704",
+        "rules_jvm_external": "rules_jvm_external@4.4.2",
+        "com_google_googletest": "googletest@1.14.0.bcr.1",
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_"
+      },
+      "repoSpec": {
+        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+        "ruleClassName": "http_archive",
+        "attributes": {
+          "urls": [
+            "https://github.com/protocolbuffers/protobuf/releases/download/v21.7/protobuf-all-21.7.zip"
+          ],
+          "integrity": "sha256-VJOiH17T/FAuZv7GuUScBqVRztYwAvpIkDxA36jeeko=",
+          "strip_prefix": "protobuf-21.7",
+          "remote_patches": {
+            "https://bcr.bazel.build/modules/protobuf/21.7/patches/add_module_dot_bazel.patch": "sha256-q3V2+eq0v2XF0z8z+V+QF4cynD6JvHI1y3kI/+rzl5s=",
+            "https://bcr.bazel.build/modules/protobuf/21.7/patches/add_module_dot_bazel_for_examples.patch": "sha256-O7YP6s3lo/1opUiO0jqXYORNHdZ/2q3hjz1QGy8QdIU=",
+            "https://bcr.bazel.build/modules/protobuf/21.7/patches/relative_repo_names.patch": "sha256-RK9RjW8T5UJNG7flIrnFiNE9vKwWB+8uWWtJqXYT0w4=",
+            "https://bcr.bazel.build/modules/protobuf/21.7/patches/add_missing_files.patch": "sha256-Hyne4DG2u5bXcWHNxNMirA2QFAe/2Cl8oMm1XJdkQIY="
+          },
+          "remote_patch_strip": 1
+        }
+      }
+    },
     "rules_java@7.4.0": {
       "name": "rules_java",
       "version": "7.4.0",
@@ -1012,35 +1239,6 @@
         }
       }
     },
-    "rules_proto@5.3.0-21.7": {
-      "name": "rules_proto",
-      "version": "5.3.0-21.7",
-      "key": "rules_proto@5.3.0-21.7",
-      "repoName": "rules_proto",
-      "executionPlatformsToRegister": [],
-      "toolchainsToRegister": [],
-      "extensionUsages": [],
-      "deps": {
-        "bazel_skylib": "bazel_skylib@1.5.0",
-        "com_google_protobuf": "protobuf@21.7",
-        "rules_cc": "rules_cc@0.0.9",
-        "bazel_tools": "bazel_tools@_",
-        "local_config_platform": "local_config_platform@_"
-      },
-      "repoSpec": {
-        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-        "ruleClassName": "http_archive",
-        "attributes": {
-          "urls": [
-            "https://github.com/bazelbuild/rules_proto/archive/refs/tags/5.3.0-21.7.tar.gz"
-          ],
-          "integrity": "sha256-3D+yBqLLNEG0heseQjFlsjEjWh6psDG0Qzz3vB+kYN0=",
-          "strip_prefix": "rules_proto-5.3.0-21.7",
-          "remote_patches": {},
-          "remote_patch_strip": 0
-        }
-      }
-    },
     "buildozer@6.4.0.2": {
       "name": "buildozer",
       "version": "6.4.0.2",
@@ -1107,90 +1305,6 @@
         }
       }
     },
-    "protobuf@21.7": {
-      "name": "protobuf",
-      "version": "21.7",
-      "key": "protobuf@21.7",
-      "repoName": "protobuf",
-      "executionPlatformsToRegister": [],
-      "toolchainsToRegister": [],
-      "extensionUsages": [
-        {
-          "extensionBzlFile": "@rules_jvm_external//:extensions.bzl",
-          "extensionName": "maven",
-          "usingModule": "protobuf@21.7",
-          "location": {
-            "file": "https://bcr.bazel.build/modules/protobuf/21.7/MODULE.bazel",
-            "line": 22,
-            "column": 22
-          },
-          "imports": {
-            "maven": "maven"
-          },
-          "devImports": [],
-          "tags": [
-            {
-              "tagName": "install",
-              "attributeValues": {
-                "name": "maven",
-                "artifacts": [
-                  "com.google.code.findbugs:jsr305:3.0.2",
-                  "com.google.code.gson:gson:2.8.9",
-                  "com.google.errorprone:error_prone_annotations:2.3.2",
-                  "com.google.j2objc:j2objc-annotations:1.3",
-                  "com.google.guava:guava:31.1-jre",
-                  "com.google.guava:guava-testlib:31.1-jre",
-                  "com.google.truth:truth:1.1.2",
-                  "junit:junit:4.13.2",
-                  "org.mockito:mockito-core:4.3.1"
-                ]
-              },
-              "devDependency": false,
-              "location": {
-                "file": "https://bcr.bazel.build/modules/protobuf/21.7/MODULE.bazel",
-                "line": 24,
-                "column": 14
-              }
-            }
-          ],
-          "hasDevUseExtension": false,
-          "hasNonDevUseExtension": true
-        }
-      ],
-      "deps": {
-        "bazel_skylib": "bazel_skylib@1.5.0",
-        "rules_python": "rules_python@0.31.0",
-        "rules_cc": "rules_cc@0.0.9",
-        "rules_proto": "rules_proto@5.3.0-21.7",
-        "rules_java": "rules_java@7.4.0",
-        "rules_pkg": "rules_pkg@0.7.0",
-        "com_google_abseil": "abseil-cpp@20240116.1",
-        "zlib": "zlib@1.3",
-        "upb": "upb@0.0.0-20220923-a547704",
-        "rules_jvm_external": "rules_jvm_external@4.4.2",
-        "com_google_googletest": "googletest@1.14.0.bcr.1",
-        "bazel_tools": "bazel_tools@_",
-        "local_config_platform": "local_config_platform@_"
-      },
-      "repoSpec": {
-        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-        "ruleClassName": "http_archive",
-        "attributes": {
-          "urls": [
-            "https://github.com/protocolbuffers/protobuf/releases/download/v21.7/protobuf-all-21.7.zip"
-          ],
-          "integrity": "sha256-VJOiH17T/FAuZv7GuUScBqVRztYwAvpIkDxA36jeeko=",
-          "strip_prefix": "protobuf-21.7",
-          "remote_patches": {
-            "https://bcr.bazel.build/modules/protobuf/21.7/patches/add_module_dot_bazel.patch": "sha256-q3V2+eq0v2XF0z8z+V+QF4cynD6JvHI1y3kI/+rzl5s=",
-            "https://bcr.bazel.build/modules/protobuf/21.7/patches/add_module_dot_bazel_for_examples.patch": "sha256-O7YP6s3lo/1opUiO0jqXYORNHdZ/2q3hjz1QGy8QdIU=",
-            "https://bcr.bazel.build/modules/protobuf/21.7/patches/relative_repo_names.patch": "sha256-RK9RjW8T5UJNG7flIrnFiNE9vKwWB+8uWWtJqXYT0w4=",
-            "https://bcr.bazel.build/modules/protobuf/21.7/patches/add_missing_files.patch": "sha256-Hyne4DG2u5bXcWHNxNMirA2QFAe/2Cl8oMm1XJdkQIY="
-          },
-          "remote_patch_strip": 1
-        }
-      }
-    },
     "zlib@1.3": {
       "name": "zlib",
       "version": "1.3",
@@ -1219,53 +1333,6 @@
             "https://bcr.bazel.build/modules/zlib/1.3/patches/module_dot_bazel.patch": "sha256-fPWLM+2xaF/kuy+kZc1YTfW6hNjrkG400Ho7gckuyJk="
           },
           "remote_patch_strip": 0
-        }
-      }
-    },
-    "bazel_features@1.1.1": {
-      "name": "bazel_features",
-      "version": "1.1.1",
-      "key": "bazel_features@1.1.1",
-      "repoName": "bazel_features",
-      "executionPlatformsToRegister": [],
-      "toolchainsToRegister": [],
-      "extensionUsages": [
-        {
-          "extensionBzlFile": "@bazel_features//private:extensions.bzl",
-          "extensionName": "version_extension",
-          "usingModule": "bazel_features@1.1.1",
-          "location": {
-            "file": "https://bcr.bazel.build/modules/bazel_features/1.1.1/MODULE.bazel",
-            "line": 6,
-            "column": 24
-          },
-          "imports": {
-            "bazel_features_globals": "bazel_features_globals",
-            "bazel_features_version": "bazel_features_version"
-          },
-          "devImports": [],
-          "tags": [],
-          "hasDevUseExtension": false,
-          "hasNonDevUseExtension": true
-        }
-      ],
-      "deps": {
-        "bazel_tools": "bazel_tools@_",
-        "local_config_platform": "local_config_platform@_"
-      },
-      "repoSpec": {
-        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-        "ruleClassName": "http_archive",
-        "attributes": {
-          "urls": [
-            "https://github.com/bazel-contrib/bazel_features/releases/download/v1.1.1/bazel_features-v1.1.1.tar.gz"
-          ],
-          "integrity": "sha256-YsJuQn5cvHUQJERpJ2IuOYqdzfMsZDJSOIFXCdEcEag=",
-          "strip_prefix": "bazel_features-1.1.1",
-          "remote_patches": {
-            "https://bcr.bazel.build/modules/bazel_features/1.1.1/patches/module_dot_bazel_version.patch": "sha256-+56MAEsc7bYN/Pzhn252ZQUxiRzZg9bynXj1qpsmCYs="
-          },
-          "remote_patch_strip": 1
         }
       }
     },
@@ -2356,23 +2423,6 @@
               ]
             }
           },
-          "python_3_11": {
-            "bzlFile": "@@rules_python~//python/private:toolchains_repo.bzl",
-            "ruleClassName": "toolchain_aliases",
-            "attributes": {
-              "python_version": "3.11.7",
-              "user_repository_name": "python_3_11",
-              "platforms": [
-                "aarch64-apple-darwin",
-                "aarch64-unknown-linux-gnu",
-                "ppc64le-unknown-linux-gnu",
-                "s390x-unknown-linux-gnu",
-                "x86_64-apple-darwin",
-                "x86_64-pc-windows-msvc",
-                "x86_64-unknown-linux-gnu"
-              ]
-            }
-          },
           "python_3_11_aarch64-unknown-linux-gnu": {
             "bzlFile": "@@rules_python~//python:repositories.bzl",
             "ruleClassName": "python_repository",
@@ -2407,6 +2457,189 @@
               "strip_prefix": "python",
               "coverage_tool": "",
               "ignore_root_user_error": false
+            }
+          },
+          "pythons_hub": {
+            "bzlFile": "@@rules_python~//python/private/bzlmod:pythons_hub.bzl",
+            "ruleClassName": "hub_repo",
+            "attributes": {
+              "default_python_version": "3.12",
+              "toolchain_prefixes": [
+                "_0000_python_3_11_",
+                "_0001_python_3_12_"
+              ],
+              "toolchain_python_versions": [
+                "3.11",
+                "3.12"
+              ],
+              "toolchain_set_python_version_constraints": [
+                "True",
+                "False"
+              ],
+              "toolchain_user_repository_names": [
+                "python_3_11",
+                "python_3_12"
+              ]
+            }
+          },
+          "python_3_12_x86_64-pc-windows-msvc": {
+            "bzlFile": "@@rules_python~//python:repositories.bzl",
+            "ruleClassName": "python_repository",
+            "attributes": {
+              "sha256": "fd5a9e0f41959d0341246d3643f2b8794f638adc0cec8dd5e1b6465198eae08a",
+              "patches": [],
+              "platform": "x86_64-pc-windows-msvc",
+              "python_version": "3.12.1",
+              "release_filename": "20240107/cpython-3.12.1+20240107-x86_64-pc-windows-msvc-shared-install_only.tar.gz",
+              "urls": [
+                "https://github.com/indygreg/python-build-standalone/releases/download/20240107/cpython-3.12.1+20240107-x86_64-pc-windows-msvc-shared-install_only.tar.gz"
+              ],
+              "distutils_content": "",
+              "strip_prefix": "python",
+              "coverage_tool": "",
+              "ignore_root_user_error": false
+            }
+          },
+          "python_3_12_x86_64-unknown-linux-gnu": {
+            "bzlFile": "@@rules_python~//python:repositories.bzl",
+            "ruleClassName": "python_repository",
+            "attributes": {
+              "sha256": "74e330b8212ca22fd4d9a2003b9eec14892155566738febc8e5e572f267b9472",
+              "patches": [],
+              "platform": "x86_64-unknown-linux-gnu",
+              "python_version": "3.12.1",
+              "release_filename": "20240107/cpython-3.12.1+20240107-x86_64-unknown-linux-gnu-install_only.tar.gz",
+              "urls": [
+                "https://github.com/indygreg/python-build-standalone/releases/download/20240107/cpython-3.12.1+20240107-x86_64-unknown-linux-gnu-install_only.tar.gz"
+              ],
+              "distutils_content": "",
+              "strip_prefix": "python",
+              "coverage_tool": "",
+              "ignore_root_user_error": false
+            }
+          },
+          "python_3_11_x86_64-pc-windows-msvc": {
+            "bzlFile": "@@rules_python~//python:repositories.bzl",
+            "ruleClassName": "python_repository",
+            "attributes": {
+              "sha256": "67077e6fa918e4f4fd60ba169820b00be7c390c497bf9bc9cab2c255ea8e6f3e",
+              "patches": [],
+              "platform": "x86_64-pc-windows-msvc",
+              "python_version": "3.11.7",
+              "release_filename": "20240107/cpython-3.11.7+20240107-x86_64-pc-windows-msvc-shared-install_only.tar.gz",
+              "urls": [
+                "https://github.com/indygreg/python-build-standalone/releases/download/20240107/cpython-3.11.7+20240107-x86_64-pc-windows-msvc-shared-install_only.tar.gz"
+              ],
+              "distutils_content": "",
+              "strip_prefix": "python",
+              "coverage_tool": "",
+              "ignore_root_user_error": false
+            }
+          },
+          "python_3_12_aarch64-apple-darwin": {
+            "bzlFile": "@@rules_python~//python:repositories.bzl",
+            "ruleClassName": "python_repository",
+            "attributes": {
+              "sha256": "f93f8375ca6ac0a35d58ff007043cbd3a88d9609113f1cb59cf7c8d215f064af",
+              "patches": [],
+              "platform": "aarch64-apple-darwin",
+              "python_version": "3.12.1",
+              "release_filename": "20240107/cpython-3.12.1+20240107-aarch64-apple-darwin-install_only.tar.gz",
+              "urls": [
+                "https://github.com/indygreg/python-build-standalone/releases/download/20240107/cpython-3.12.1+20240107-aarch64-apple-darwin-install_only.tar.gz"
+              ],
+              "distutils_content": "",
+              "strip_prefix": "python",
+              "coverage_tool": "",
+              "ignore_root_user_error": false
+            }
+          },
+          "python_3_12": {
+            "bzlFile": "@@rules_python~//python/private:toolchains_repo.bzl",
+            "ruleClassName": "toolchain_aliases",
+            "attributes": {
+              "python_version": "3.12.1",
+              "user_repository_name": "python_3_12",
+              "platforms": [
+                "aarch64-apple-darwin",
+                "aarch64-unknown-linux-gnu",
+                "ppc64le-unknown-linux-gnu",
+                "s390x-unknown-linux-gnu",
+                "x86_64-apple-darwin",
+                "x86_64-pc-windows-msvc",
+                "x86_64-unknown-linux-gnu"
+              ]
+            }
+          },
+          "python_3_12_x86_64-apple-darwin": {
+            "bzlFile": "@@rules_python~//python:repositories.bzl",
+            "ruleClassName": "python_repository",
+            "attributes": {
+              "sha256": "eca96158c1568dedd9a0b3425375637a83764d1fa74446438293089a8bfac1f8",
+              "patches": [],
+              "platform": "x86_64-apple-darwin",
+              "python_version": "3.12.1",
+              "release_filename": "20240107/cpython-3.12.1+20240107-x86_64-apple-darwin-install_only.tar.gz",
+              "urls": [
+                "https://github.com/indygreg/python-build-standalone/releases/download/20240107/cpython-3.12.1+20240107-x86_64-apple-darwin-install_only.tar.gz"
+              ],
+              "distutils_content": "",
+              "strip_prefix": "python",
+              "coverage_tool": "",
+              "ignore_root_user_error": false
+            }
+          },
+          "python_3_12_s390x-unknown-linux-gnu": {
+            "bzlFile": "@@rules_python~//python:repositories.bzl",
+            "ruleClassName": "python_repository",
+            "attributes": {
+              "sha256": "60631211c701f8d2c56e5dd7b154e68868128a019b9db1d53a264f56c0d4aee2",
+              "patches": [],
+              "platform": "s390x-unknown-linux-gnu",
+              "python_version": "3.12.1",
+              "release_filename": "20240107/cpython-3.12.1+20240107-s390x-unknown-linux-gnu-install_only.tar.gz",
+              "urls": [
+                "https://github.com/indygreg/python-build-standalone/releases/download/20240107/cpython-3.12.1+20240107-s390x-unknown-linux-gnu-install_only.tar.gz"
+              ],
+              "distutils_content": "",
+              "strip_prefix": "python",
+              "coverage_tool": "",
+              "ignore_root_user_error": false
+            }
+          },
+          "python_3_12_aarch64-unknown-linux-gnu": {
+            "bzlFile": "@@rules_python~//python:repositories.bzl",
+            "ruleClassName": "python_repository",
+            "attributes": {
+              "sha256": "236533ef20e665007a111c2f36efb59c87ae195ad7dca223b6dc03fb07064f0b",
+              "patches": [],
+              "platform": "aarch64-unknown-linux-gnu",
+              "python_version": "3.12.1",
+              "release_filename": "20240107/cpython-3.12.1+20240107-aarch64-unknown-linux-gnu-install_only.tar.gz",
+              "urls": [
+                "https://github.com/indygreg/python-build-standalone/releases/download/20240107/cpython-3.12.1+20240107-aarch64-unknown-linux-gnu-install_only.tar.gz"
+              ],
+              "distutils_content": "",
+              "strip_prefix": "python",
+              "coverage_tool": "",
+              "ignore_root_user_error": false
+            }
+          },
+          "python_3_11": {
+            "bzlFile": "@@rules_python~//python/private:toolchains_repo.bzl",
+            "ruleClassName": "toolchain_aliases",
+            "attributes": {
+              "python_version": "3.11.7",
+              "user_repository_name": "python_3_11",
+              "platforms": [
+                "aarch64-apple-darwin",
+                "aarch64-unknown-linux-gnu",
+                "ppc64le-unknown-linux-gnu",
+                "s390x-unknown-linux-gnu",
+                "x86_64-apple-darwin",
+                "x86_64-pc-windows-msvc",
+                "x86_64-unknown-linux-gnu"
+              ]
             }
           },
           "python_3_11_ppc64le-unknown-linux-gnu": {
@@ -2445,50 +2678,49 @@
               "ignore_root_user_error": false
             }
           },
-          "pythons_hub": {
-            "bzlFile": "@@rules_python~//python/private/bzlmod:pythons_hub.bzl",
-            "ruleClassName": "hub_repo",
-            "attributes": {
-              "default_python_version": "3.11",
-              "toolchain_prefixes": [
-                "_0000_python_3_11_"
-              ],
-              "toolchain_python_versions": [
-                "3.11"
-              ],
-              "toolchain_set_python_version_constraints": [
-                "False"
-              ],
-              "toolchain_user_repository_names": [
-                "python_3_11"
-              ]
-            }
-          },
           "python_versions": {
             "bzlFile": "@@rules_python~//python/private:toolchains_repo.bzl",
             "ruleClassName": "multi_toolchain_aliases",
             "attributes": {
               "python_versions": {
+                "3.12": "python_3_12",
                 "3.11": "python_3_11"
               }
             }
           },
-          "python_3_11_x86_64-pc-windows-msvc": {
+          "python_3_12_ppc64le-unknown-linux-gnu": {
             "bzlFile": "@@rules_python~//python:repositories.bzl",
             "ruleClassName": "python_repository",
             "attributes": {
-              "sha256": "67077e6fa918e4f4fd60ba169820b00be7c390c497bf9bc9cab2c255ea8e6f3e",
+              "sha256": "78051f0d1411ee62bc2af5edfccf6e8400ac4ef82887a2affc19a7ace6a05267",
               "patches": [],
-              "platform": "x86_64-pc-windows-msvc",
-              "python_version": "3.11.7",
-              "release_filename": "20240107/cpython-3.11.7+20240107-x86_64-pc-windows-msvc-shared-install_only.tar.gz",
+              "platform": "ppc64le-unknown-linux-gnu",
+              "python_version": "3.12.1",
+              "release_filename": "20240107/cpython-3.12.1+20240107-ppc64le-unknown-linux-gnu-install_only.tar.gz",
               "urls": [
-                "https://github.com/indygreg/python-build-standalone/releases/download/20240107/cpython-3.11.7+20240107-x86_64-pc-windows-msvc-shared-install_only.tar.gz"
+                "https://github.com/indygreg/python-build-standalone/releases/download/20240107/cpython-3.12.1+20240107-ppc64le-unknown-linux-gnu-install_only.tar.gz"
               ],
               "distutils_content": "",
               "strip_prefix": "python",
               "coverage_tool": "",
               "ignore_root_user_error": false
+            }
+          },
+          "python_3_12_host": {
+            "bzlFile": "@@rules_python~//python/private:toolchains_repo.bzl",
+            "ruleClassName": "host_toolchain",
+            "attributes": {
+              "python_version": "3.12.1",
+              "user_repository_name": "python_3_12",
+              "platforms": [
+                "aarch64-apple-darwin",
+                "aarch64-unknown-linux-gnu",
+                "ppc64le-unknown-linux-gnu",
+                "s390x-unknown-linux-gnu",
+                "x86_64-apple-darwin",
+                "x86_64-pc-windows-msvc",
+                "x86_64-unknown-linux-gnu"
+              ]
             }
           },
           "python_3_11_x86_64-unknown-linux-gnu": {

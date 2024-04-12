@@ -1,0 +1,4 @@
+--extra-index-url https://pypi.org/simple/
+
+codechecker==6.23.1
+clang-format==18.1.1

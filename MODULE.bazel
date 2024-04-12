@@ -56,6 +56,26 @@ http_archive(
 bazel_dep(name = "hedron_compile_commands", dev_dependency = True)
 git_override(
     module_name = "hedron_compile_commands",
-    remote = "https://github.com/hedronvision/bazel-compile-commands-extractor.git",
     commit = "4689147cf4b1c2d507fd8bbb8eb748a7bbaad4ef",
+    remote = "https://github.com/hedronvision/bazel-compile-commands-extractor.git",
 )
+
+bazel_dep(name = "rules_python", version = "0.31.0")
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.toolchain(
+    is_default = True,
+    # configure_coverage_tool = True,
+    python_version = "3.12",
+)
+use_repo(python, "python_versions", "pythons_hub")
+
+register_toolchains("@pythons_hub//:all")
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pip_deps",
+    python_version = "3.12",
+    requirements_lock = "//thrid_party/pip/;requirements_lock.txt",
+)
+use_repo(pip, "pip_deps")
