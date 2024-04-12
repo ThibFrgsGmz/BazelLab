@@ -88,7 +88,16 @@
 		"C_Cpp.default.defines": [],
 		"C_Cpp.errorSquiggles": "enabled",
 		"C_Cpp.formatting": "clangFormat",
-		"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
+		"C_Cpp.intelliSenseEngine": "disabled",
+		"clangd.arguments": [
+			"--header-insertion=never",
+			"--compile-commands-dir=${workspaceFolder}/compile_commands", // Chemin vers le répertoire contenant la compile database
+			"-j=4", // Nombre de threads à utiliser pour l'analyse
+			"--query-driver=**"
+		],
+		"clangd.semanticHighlighting.enabled": true, // Activation de la coloration sémantique
+		"clangd.highlightInactiveParameter": true, // Mise en surbrillance des paramètres inactifs dans les fonctions
+		"clangd.formatting.style": "file", // Utiliser le style de formatage spécifié dans un fichier .clang-format
 		"bazel.buildifierExecutable": "/home/life/code/buildifier",
 		"bazel.buildifierFixOnFormat": true,
 		"editor.rulers": [
