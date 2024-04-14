@@ -36,7 +36,10 @@
 			"ms-vscode.cpptools-themes",
 			"rjmacarthy.twinny",
 			"xaver.clang-format",
-			"matepek.testmate-cpp-legacy"
+			"matepek.testmate-cpp",
+			"ms-python.python",
+			"ms-sarifvscode.sarif-viewer",
+			"ms-python.debugpy"
 		],
 		"unwantedRecommendations": []
 	},
@@ -74,7 +77,7 @@
 			"*.hpp": "cpp",
 			"*.cc": "cpp"
 		},
-		"C_Cpp.default.cppStandard": "c++23",
+		"C_Cpp.default.cppStandard": "c++20",
 		"C_Cpp.default.compilerPath": "/usr/bin/g++",
 		"C_Cpp.default.intelliSenseMode": "gcc-x64",
 		"C_Cpp.default.includePath": [
