@@ -12,6 +12,9 @@ peuvent se désynchroniser en cas de changement de dépendance et doivent être 
 même manière qu'une plate-forme est ajoutée.
 """
 
+# NOTE: When editing this file, also update the lockfile.
+#   bazel mod deps --lockfile_mode=update
+
 # Déclaration du module principal
 module(name = "bazel_lab")
 
@@ -76,6 +79,6 @@ pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
 pip.parse(
     hub_name = "pip_deps",
     python_version = "3.12",
-    requirements_lock = "//thrid_party/pip/;requirements_lock.txt",
+    requirements_lock = "//third_party/pip:requirements_lock.txt",
 )
 use_repo(pip, "pip_deps")
