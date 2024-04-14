@@ -1,75 +1,63 @@
-# BazelLab
 
-[![Pre-commit](https://github.com/ThibFrgsGmz/BazelLab/actions/workflows/pre_commit.yaml/badge.svg)](https://github.com/ThibFrgsGmz/BazelLab/actions/workflows/pre_commit.yaml)
+<h1 align="center">Laboratoire Bazel</h1>
 
-A space for experimentation designed to explore Bazel's capabilities in a multi-language environment.
+[![Pré-engagement](https://github.com/ThibFrgsGmz/BazelLab/actions/workflows/pre_commit.yaml/badge.svg)](https://github.com/ThibFrgsGmz/BazelLab/actions/workflows/pre_commit.yaml)
 
-This project aims to deepen knowledge of software building with Bazel in a multi-language environment. It allows for experimentation with programming languages such as C++, Python, and Rust. The project explores the benefits of Bazel for managing dependencies and optimizing builds in a diverse framework. Created to facilitate learning and innovation, "BazelLab" offers a chance to enhance programming proficiency and comprehend the intricacies of contemporary build systems, all while remaining in a comfortable and self-directed environment.
+Un espace d'expérimentation conçu pour explorer les capacités de Bazel dans un environnement multi-langages.
 
+Ce projet vise à approfondir la connaissance de la construction logicielle avec Bazel dans un environnement multi-langages. Il permet d'expérimenter avec des langages de programmation tels que le C++, Python et Rust. Le projet explore les avantages de Bazel pour la gestion des dépendances et l'optimisation des constructions dans un cadre diversifié. Créé pour faciliter l'apprentissage et l'innovation, "BazelLab" offre une chance d'améliorer la compétence en programmation et de comprendre les subtilités des systèmes de construction contemporains, tout en restant dans un environnement confortable et autodirigé.
 
-## Utilizing Bazelisk for Project Management
+## Utilisation de Bazelisk pour la gestion de projet
 
-### Introduction to Bazelisk
+### Introduction à Bazelisk
 
-In this project, we mandate the use of [Bazelisk](https://github.com/bazelbuild/bazelisk) as the version manager for Bazel, our primary build tool. Bazelisk serves as an indispensable wrapper around Bazel, providing several key benefits crucial for sophisticated software development:
+Dans ce projet, nous imposons l'utilisation de [Bazelisk](https://github.com/bazelbuild/bazelisk) en tant que gestionnaire de version pour Bazel, notre principal outil de construction. Bazelisk sert d'enveloppe indispensable autour de Bazel, fournissant plusieurs avantages clés cruciaux pour le développement logiciel sophistiqué.
 
-- **Automated Bazel Version Management**: Bazelisk ensures uniformity across the development lifecycle by enforcing the usage of a specific Bazel version, as declared in the .bazelversion file. This uniformity mitigates build inconsistencies and compatibility issues across different Bazel versions.
-- **Ease of Use and Consistency**: By automating the Bazel version updates, Bazelisk simplifies the developer experience, eliminating the need for manual management and potential version mismatches.
-- **Optimized Continuous Integration**: Bazelisk’s alignment of Bazel versions between local development environments and CI/CD pipelines ensures reproducible builds, crucial for reliable and efficient software deployment.
+### Implications de ne pas utiliser Bazelisk
 
-### Implications of Not Using Bazelisk
+Négliger l'utilisation de Bazelisk dans ce projet pourrait entraîner plusieurs défis significatifs :
 
-Neglecting the use of Bazelisk in this project could lead to several significant challenges:
+### Installation de Bazelisk
 
-- **Version Inconsistency**: Developers might end up using divergent Bazel versions, leading to non-reproducible builds and unexpected build failures.
-- **Management Overhead**: Manual version management of Bazel is not only tedious but also prone to human error, which can be detrimental in a high-stakes development environment.
-- **CI/CD Complications**: Discrepancies in Bazel versions between development and CI/CD environments can result in unforeseen failures during integration and deployment processes.
+1. Pour installer Bazelisk et garantir une expérience de développement sans heurts, suivez ces étapes :
 
-### Installing Bazelisk
-
-1: To install Bazelisk and ensure a seamless development experience, follow these steps:
-
-- Download Bazelisk:
-    - For Unix-based systems (Linux/MacOS), execute:
 ```sh
 curl -LJO "https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64"
 chmod +x bazelisk-linux-amd64
 mv bazelisk-linux-amd64 /usr/local/bin/bazel
 ```
 
-2. Verify the Installation:
-Run bazel version to ensure that Bazelisk has been correctly installed and is operational.
+Pour vérifier l'installation, exécutez la commande suivante :
 
-3. Usage:
-Utilize the bazel command as usual in your build processes. Bazelisk will automatically manage the Bazel version, aligning with the specifications in your project.
+```sh
+bazel version
+```
+
+2. Utilisation :
+Utilisez la commande bazel comme d'habitude dans vos processus de construction.
+Bazelisk gérera automatiquement la version de Bazel, s'alignant sur les spécifications de votre projet.
 
 
-# pre-commit
+## Pré-engagement
 
-Ce projet utilise pre-commit pour automatiser les contrôles de qualité du code avant de valider les modifications. pre-commit est un outil qui vous permet d'exécuter automatiquement une série de contrôles (hooks) sur vos fichiers à chaque validation. Cela permet de s'assurer que le code soumis respecte les standards de qualité définis dans le projet.
+Ce projet utilise pre-commit pour automatiser les contrôles de qualité du code avant de valider les modifications. pre-commit est un outil qui permet d'exécuter automatiquement une série de contrôles (hooks) sur vos fichiers à chaque validation. Cela garantit que le code soumis respecte les normes de qualité définies dans le projet.
+Configuration
 
-## Configuration
-
-La configuration de pre-commit est définie dans le fichier .pre-commit-config.yaml à la racine du projet. Ce fichier spécifie les hooks à exécuter et la manière de les exécuter. Pour installer et configurer pre-commit localement, il suffit d'exécuter la commande suivante :
+La configuration de pre-commit est définie dans le fichier .pre-commit-config.yaml à la racine du projet. Ce fichier spécifie les hooks à exécuter et la manière de les exécuter. Pour installer et configurer pre-commit localement, il suffit d'exécuter la commande suivante
 
 ```sh
 pre-commit install
 ```
 
-Ceci installera les hooks pre-commit dans votre dépôt local et les exécutera automatiquement à chaque validation.
-
-## Mise à jour et exécution des hooks
+### Mise à jour et exécution des hooks
 
 Pour mettre à jour les hooks de pre-commit et les exécuter sur tous les fichiers du projet, vous pouvez utiliser la commande suivante :
-
 
 ```sh
 pre-commit autoupdate --freeze && pre-commit run -a
 ```
 
-Cela mettra à jour les crochets de pré-commission selon la configuration spécifiée dans votre fichier .pre-commit-config.yaml et exécutera ensuite ces crochets sur tous les fichiers du projet.
-
-## Exécuter avec Bazel
+### Exécuter avec Bazel
 
 Pour exécuter les hooks pre-commit avec Bazel, utilisez la commande suivante :
 
@@ -77,16 +65,27 @@ Pour exécuter les hooks pre-commit avec Bazel, utilisez la commande suivante :
 bazel run //scripts:lint
 ```
 
-Cette commande exécutera les crochets de pré-commission spécifiés dans votre configuration de pré-commission à l'aide de Bazel. Assurez-vous que Bazel est correctement configuré et installé sur votre système avant d'exécuter cette commande.
-
 ## Génération de la base de données de compilation avec Hedron
 
 Hedron est un outil utile pour générer une base de données de compilation (compile database) à partir de projets Bazel. Cette base de données est essentielle pour l'intégration de Bazel avec des outils externes tels que les analyseurs statiques de code et les éditeurs de texte pour une meilleure prise en charge du développement.
 
-Pour utiliser Hedron et générer une base de données de compilation exécuter simplement la commande:
+Pour utiliser Hedron et générer une base de données de compilation, exécutez simplement la commande :
 
 ```sh
 bazel run :refresh_compile_commands
 ```
 
-Cela générera la base de données de compilation dans votre répertoire de travail.
+## Gestion des dépendances avec Bazel
+
+Dans ce projet, Bazel est utilisé pour maintenir et mettre à jour les dépendances Python. Les commandes ci-dessous sont utilisées pour assurer la cohérence des versions des dépendances à travers le développement.
+
+
+```sh
+bazel mod deps --lockfile_mode=update
+```
+
+```sh
+bazel run //third_party/pip:requirements.update
+```
+
+Elles simplifient le processus de mise à jour et garantissent la compatibilité des dépendances, contribuant ainsi à la stabilité du projet.
