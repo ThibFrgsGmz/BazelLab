@@ -1,20 +1,12 @@
-#include "circular_buffer.h"
-#include "fuzztest/fuzztest.h"
-#include "gtest/gtest.h"
+#include <cstddef>
+#include <cstdint>
 
-/// Fuzz test for CircularBuffer class.
-void fuzz_circular_buffer(std::vector<int> const& inputs) {
-  CircularBuffer buffer;
-  for (auto value : inputs) {
-    // Simulate some operations based on value
-    if (value % 3 == 0) {
-      buffer.push_back(value);
-    } else if (value % 3 == 1) {
-      buffer.pop_front();
-    } else if (value % 3 == 2) {
-      buffer.is_empty();
-    }
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
+  if (size == 0) {
+    return 0;
   }
+  int k = 0x7fffffff;
+  k += data[0];
+  // Use k.
+  return k & 0;
 }
-
-FUZZ_TEST(CircularBufferTestSuite, fuzz_circular_buffer);

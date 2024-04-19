@@ -82,3 +82,13 @@ pip.parse(
     requirements_lock = "//third_party/pip:requirements_lock.txt",
 )
 use_repo(pip, "pip_deps")
+
+# use_repo(use_extension("//third_party/cib:direct.bzl", "load_cib"))
+
+# toto = use_extension("//third_party/cib:direct.bzl", "load_cib")
+# use_repo(toto, "com_intel_cib")
+
+one_off_ext = use_extension("//third_party/cib:direct.bzl", "one_off_ext")
+use_repo(one_off_ext, "com_intel_cib")
+
+bazel_dep(name = "rules_fuzzing", version = "0.5.1")

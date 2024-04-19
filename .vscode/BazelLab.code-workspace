@@ -75,7 +75,9 @@
 		"files.associations": {
 			"*.h": "cpp",
 			"*.hpp": "cpp",
-			"*.cc": "cpp"
+			"*.cc": "cpp",
+			".bazelrc": "python",
+			".bazeliskrc": "python"
 		},
 		"C_Cpp.default.cppStandard": "c++20",
 		"C_Cpp.default.compilerPath": "/usr/bin/g++",

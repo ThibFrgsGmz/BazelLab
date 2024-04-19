@@ -11,6 +11,10 @@ build:clang-tidy --@bazel_clang_tidy//:clang_tidy_config=//:clang_tidy_config
 build --action_env=CC=clang
 build --action_env=CXX=clang++
 
+# build --cxxopt=-fdiagnostics-format=sarif-stderr
+
+build:codechecker --run_under="CodeChecker analyze"
+
 # Use the C++17 standard.
 build --cxxopt=-std=c++17
 
@@ -20,12 +24,44 @@ build --copt=-mcrc32
 # Show everything when running tests.
 test --test_output=streamed
 
+# Silence all C/C++ warnings in external code.
+#
+# Note that this will not silence warnings from external headers #include'd in
+# first-party code.
+common --per_file_copt=external/.*@-w
+common --host_per_file_copt=external/.*@-w
+
+# Silence compiler warnings from external repositories.
+#
+# This is supported by Bazel's default C++ toolchain, but not yet by
+# rules_cc_toolchain
+# (https://github.com/bazelembedded/rules_cc_toolchain/issues/46).
+build --features=external_include_paths
+
+
+# Define the Fuzzer configuration.
+build:asan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine=@rules_fuzzing//fuzzing/engines:libfuzzer
+build:asan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_instrumentation=libfuzzer
+build:asan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_sanitizer=asan
+
+build:ubsan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine=@rules_fuzzing//fuzzing/engines:libfuzzer
+build:ubsan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_instrumentation=libfuzzer
+build:ubsan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_sanitizer=ubsan
+
+# Required for combined code coverage reports.
+coverage --experimental_generate_llvm_lcov
+coverage --combined_report=lcov
+
 # To create this file, please run:
 #
 #  bazel run @com_google_fuzztest//bazel:setup_configs > fuzztest.bazelrc
 #
 try-import %workspace%/fuzztest.bazelrc
 
-# Allow users to override any of the flags desired by importing a user-specific
-# RC file here if present.
+# User bazelrc file; see
+# https://bazel.build/configure/best-practices#bazelrc-file
+#
+# Note: this should be at the bottom of the file, so that user-specified
+# options override anything in this file
+# (https://bazel.build/run/bazelrc#imports)
 try-import %workspace%/user.bazelrc

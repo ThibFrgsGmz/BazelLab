@@ -1,11 +1,13 @@
 ---
 Checks: >
-  -*,
+  *,
   bugprone-*,
   -bugprone-easily-swappable-parameters
 
   clang-diagnostic-*,
   -clang-diagnostic-unused-command-line-argument,
+
+  -llvmlibc-*,
 
   google-*,
   -google-runtime-references,

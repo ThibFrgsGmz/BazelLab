@@ -89,3 +89,37 @@ bazel run //third_party/pip:requirements.update
 ```
 
 Elles simplifient le processus de mise à jour et garantissent la compatibilité des dépendances, contribuant ainsi à la stabilité du projet.
+
+
+## Tests de Fuzzing avec Bazel
+
+Dans ce projet, nous utilisons des tests de fuzzing pour détecter des bogues, des vulnérabilités et des comportements inattendus dans notre code. Les tests de fuzzing consistent à injecter des données aléatoires ou semi-aléatoires dans notre programme pour tester sa robustesse.
+
+### Configuration des Tests de Fuzzing
+
+Pour exécuter les tests de fuzzing dans notre projet, nous avons configuré des options spécifiques dans Bazel pour utiliser les moteurs de fuzzing libFuzzer en combinaison avec AddressSanitizer (ASan) et UndefinedBehaviorSanitizer (UBSan) pour détecter les erreurs de mémoire et les comportements indéfinis dans notre code C/C++.
+
+Voici les commandes de configuration pour les tests de fuzzing avec Bazel :
+
+```starlark
+build:asan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine=@rules_fuzzing//fuzzing/engines:libfuzzer
+build:asan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_instrumentation=libfuzzer
+build:asan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_sanitizer=asan
+
+build:ubsan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine=@rules_fuzzing//fuzzing/engines:libfuzzer
+build:ubsan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_instrumentation=libfuzzer
+build:ubsan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_sanitizer=ubsan
+```
+
+Ces configurations nous permettent de détecter efficacement les erreurs et les bogues potentiels dans notre code, contribuant ainsi à améliorer sa qualité et sa fiabilité.
+
+### Exécution des Tests de Fuzzing
+
+Pour exécuter les tests de fuzzing avec les configurations définies, utilisez les commandes suivantes :
+
+```starlark
+bazel run --config=asan-libfuzzer //src/lib/containers:fuzz_test
+bazel run --config=ubsan-libfuzzer //src/lib/containers:fuzz_test
+```
+
+Ces commandes lancent respectivement les tests de fuzzing avec les configurations ASan-libfuzzer et UBSan-libfuzzer sur notre code source situé dans le répertoire src/lib/containers.

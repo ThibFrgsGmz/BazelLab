@@ -16,6 +16,13 @@ cc_test(
     ],
 )
 
+load("@rules_fuzzing//fuzzing:cc_defs.bzl", "cc_fuzz_test")
+
+cc_fuzz_test(
+    name = "fuzz_test",
+    srcs = ["circular_buffer_fuzz_test.cc"],
+)
+
 # cc_test(
 #     name = "circular_buffer_fuzz_test",
 #     srcs = ["circular_buffer_fuzz_test.cc"],
