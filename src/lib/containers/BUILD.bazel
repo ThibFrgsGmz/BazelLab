@@ -11,7 +11,7 @@ cc_test(
     srcs = ["circular_buffer_test.cc"],
     deps = [
         ":circular_buffer",
-        "//src/tests:gtest_main",
+        "@googletest//:gtest_main",
         "@googletest//:gtest",
     ],
 )

@@ -1,0 +1,5 @@
+cc_binary(
+    name = "cib_serial_port",
+    srcs = ["main.cpp"],
+    deps = ["@_main~_repo_rules~com_intel_cib"],
+)
