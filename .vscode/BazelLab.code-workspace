@@ -43,41 +43,14 @@
 		],
 		"unwantedRecommendations": []
 	},
-	// Configurations de lancement
-	"launch": {
-		"version": "0.2.0",
-		"configurations": [
-			{
-				"name": "Launch Bazel Build",
-				"type": "cppdbg",
-				"request": "launch",
-				"program": "${workspaceFolder}/bazel-bin/<your-target-path>",
-				"args": [],
-				"stopAtEntry": false,
-				"cwd": "${workspaceFolder}",
-				"environment": [],
-				"externalConsole": false,
-				"MIMode": "gdb",
-				"setupCommands": [
-					{
-						"description": "Enable pretty-printing for gdb",
-						"text": "-enable-pretty-printing",
-						"ignoreFailures": true
-					}
-				],
-				"preLaunchTask": "bazel-build",
-				"miDebuggerPath": "/usr/bin/gdb"
-			}
-		]
-	},
 	// Paramètres de l'éditeur
 	"settings": {
 		"files.associations": {
 			"*.h": "cpp",
 			"*.hpp": "cpp",
 			"*.cc": "cpp",
-			".bazelrc": "python",
-			".bazeliskrc": "python"
+			// ".bazelrc": "python",
+			// ".bazeliskrc": "python"
 		},
 		"C_Cpp.default.cppStandard": "c++20",
 		"C_Cpp.default.compilerPath": "/usr/bin/g++",
@@ -113,6 +86,33 @@
 		"files.insertFinalNewline": true,
 		"files.trimTrailingWhitespace": true,
 		"sarif-viewer.connectToGithubCodeScanning": "off"
+	},
+	// Configurations de lancement
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch Bazel Build",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${workspaceFolder}/bazel-bin/<your-target-path>",
+				"args": [],
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder}",
+				"environment": [],
+				"externalConsole": false,
+				"MIMode": "gdb",
+				"setupCommands": [
+					{
+						"description": "Enable pretty-printing for gdb",
+						"text": "-enable-pretty-printing",
+						"ignoreFailures": true
+					}
+				],
+				"preLaunchTask": "bazel-build",
+				"miDebuggerPath": "/usr/bin/gdb"
+			}
+		]
 	},
 	// Tâches de construction
 	"tasks": {
