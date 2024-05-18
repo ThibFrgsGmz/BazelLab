@@ -17,6 +17,7 @@ build:codechecker --run_under="CodeChecker analyze"
 
 # Use the C++17 standard.
 build --cxxopt=-std=c++17
+build --linkopt=-fuse-ld=mold
 
 # Use the builtin crc32 for fast integer hashing.
 build --copt=-mcrc32
