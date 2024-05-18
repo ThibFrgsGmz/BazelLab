@@ -111,25 +111,34 @@
 		"editor.formatOnSave": true,
 		"editor.tabSize": 4,
 		"files.insertFinalNewline": true,
-		"files.trimTrailingWhitespace": true
+		"files.trimTrailingWhitespace": true,
+		"sarif-viewer.connectToGithubCodeScanning": "off"
 	},
 	// Tâches de construction
 	"tasks": {
 		"version": "2.0.0",
 		"tasks": [
 			{
-				"label": "bazel-build",
-				"type": "shell",
-				"command": "bazel",
-				"args": [
-					"build",
-					"//:<your-target>"
+				"label": "Check test",
+				"type": "bazel",
+				"command": "test",
+				"targets": [
+					"${input:pickTest}"
 				],
-				"group": {
-					"kind": "build",
-					"isDefault": true
-				},
-				"problemMatcher": []
+				"options": [
+					"--runs_per_test=9"
+				]
+			}
+		],
+		"inputs": [
+			{
+				"id": "pickTest",
+				"type": "command",
+				"command": "bazel.pickTarget",
+				"args": {
+					"query": "kind('.*_test', //src/...:*)",
+					"placeHolder": "Which test to check?"
+				}
 			}
 		]
 	}
