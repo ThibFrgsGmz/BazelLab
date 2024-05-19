@@ -57,11 +57,11 @@
 		"C_Cpp.default.intelliSenseMode": "gcc-x64",
 		"C_Cpp.default.includePath": [
 			"${workspaceFolder}/**",
-			"${workspaceFolder}/bazel-<project-name>/external/**"
+			"${workspaceFolder}/bazel-BazelLab/external/**"
 		],
 		"C_Cpp.default.browse.path": [
 			"${workspaceFolder}",
-			"${workspaceFolder}/bazel-<project-name>/external/**"
+			"${workspaceFolder}/bazel-BazelLab/external/**"
 		],
 		"C_Cpp.default.defines": [],
 		"C_Cpp.errorSquiggles": "enabled",
@@ -69,7 +69,7 @@
 		"C_Cpp.intelliSenseEngine": "disabled",
 		"clangd.arguments": [
 			"--header-insertion=never",
-			"--compile-commands-dir=${workspaceFolder}/compile_commands", // Chemin vers le répertoire contenant la compile database
+			"--compile-commands-dir=${workspaceFolder}/compile_commands.json", // Chemin vers le répertoire contenant la compile database
 			"-j=4", // Nombre de threads à utiliser pour l'analyse
 			"--query-driver=**"
 		],
