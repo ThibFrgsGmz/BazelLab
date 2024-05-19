@@ -38,16 +38,6 @@ google_benchmark_version = "1.8.3"
 
 bazel_dep(name = "google_benchmark", version = google_benchmark_version)
 
-# Déclaration de la dépendance Bazel Clang Tidy
-clang_tidy_version = "d2aecc583d14c9554febeab185833c1e8cce5384"
-
-http_archive(
-    name = "bazel_clang_tidy",
-    sha256 = "89c198a9f544beac119bb41904d16d8870686ccb5fe946442c1576934c9e6869",
-    strip_prefix = "bazel_clang_tidy-{0}".format(clang_tidy_version),
-    urls = ["https://github.com/erenon/bazel_clang_tidy/archive/{0}.tar.gz".format(clang_tidy_version)],
-)
-
 # Hedron's Compile Commands Extractor for Bazel
 # https://github.com/hedronvision/bazel-compile-commands-extractor
 bazel_dep(name = "hedron_compile_commands", dev_dependency = True)
@@ -77,7 +67,6 @@ pip.parse(
     requirements_lock = "//third_party/pip:requirements_lock.txt",
 )
 use_repo(pip, "python_packages")
-
 
 http_archive(
     name = "com_intel_cib",

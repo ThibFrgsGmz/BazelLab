@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  codechecker-server:
+    image: codechecker/codechecker-web:latest
+    container_name: codechecker-server
+    ports:
+      - 8001:8001
+    volumes:
+      - ./workspace:/workspace
+    networks:
+      - codechecker-network
+
+networks:
+  codechecker-network:
+    driver: bridge
+
+# Store the baseline like for example  `CodeChecker store  /mnt/c/Users/33673/Documents/codechecker/ --url "http://localhost:8001/Default" --name "Mon Premier Essai" --tag "UnTag"` 

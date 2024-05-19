@@ -38,3 +38,4 @@
 .codechecker/
 .cache/
 out/
+tools/lint/workspace

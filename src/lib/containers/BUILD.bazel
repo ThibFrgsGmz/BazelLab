@@ -1,4 +1,5 @@
 load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+load("@rules_fuzzing//fuzzing:cc_defs.bzl", "cc_fuzz_test")
 
 cc_library(
     name = "circular_buffer",
@@ -11,12 +12,10 @@ cc_test(
     srcs = ["circular_buffer_test.cc"],
     deps = [
         ":circular_buffer",
-        "@googletest//:gtest_main",
         "@googletest//:gtest",
+        "@googletest//:gtest_main",
     ],
 )
-
-load("@rules_fuzzing//fuzzing:cc_defs.bzl", "cc_fuzz_test")
 
 cc_fuzz_test(
     name = "fuzz_test",

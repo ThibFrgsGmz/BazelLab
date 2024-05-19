@@ -123,3 +123,22 @@ bazel run --config=ubsan-libfuzzer //src/lib/containers:fuzz_test
 ```
 
 Ces commandes lancent respectivement les tests de fuzzing avec les configurations ASan-libfuzzer et UBSan-libfuzzer sur notre code source situé dans le répertoire src/lib/containers.
+
+
+# Codechecker
+
+1. Checkout repository
+2. Install LLVM
+3. Get CodeChecker
+    1. `pip3 install codechecker`
+4. Prepare JSON compilation Database
+    1. `bazel run :refresh_compile_commands`
+5. Execute static analysis
+    1. `CodeChecker analyze compile_commands.json --output external/tmp --jobs $(nproc)`
+6. Parse and convert results to HTML
+   1. `CodeChecker parse /mnt/c/Users/33673/Documents/codechecker --export "html" --output /mnt/c/Users/33673/Documents/codechecker/toto`
+7. Store the result in the CodeChecker server/database (upload analysis of the main branch for diff with PR)
+    1. `CodeChecker store  /mnt/c/Users/33673/Documents/codechecker/ --url "http://localhost:8001/Default" --name "Mon Premier Essai" --tag "UnTag"`
+    2. Idea: create a baseline file from the reports which contains the legacy finding.
+8. Diff current results against previously stored run
+    1.

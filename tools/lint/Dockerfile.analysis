@@ -1,0 +1,80 @@
+FROM ubuntu:noble
+
+LABEL description="Analyzer environment"
+
+WORKDIR /opt/codechecker
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN useradd -ms /bin/bash nonroot
+RUN chmod -R +rwx /opt/codechecker
+
+# # Met à jour les paquets disponibles dans le système et installe les dépendances nécessaires
+RUN apt-get update \
+    && apt-get install -y \
+        software-properties-common \
+        wget \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        git \
+        build-essential \
+        python3 \
+        python3-dev \
+        python3-pip \
+        python3-venv \
+        python3-setuptools \
+        make \
+        build-essential \
+        gcc-14 \ 
+        g++-14 \
+        cppcheck \
+        mold \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc >/dev/null \
+    && add-apt-repository -y 'deb http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main' \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+        clang-18 \
+        clang-tidy-18 \
+        lld-18 \
+        libc++-18-dev \
+        libc++abi-18-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -LJO "https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64" \
+    && chmod +x bazelisk-linux-amd64 \
+    && mv bazelisk-linux-amd64 /usr/local/bin/bazel
+
+RUN pip3 install --no-cache-dir  \
+        wheel                    \
+        virtualenv               \
+        codechecker              \
+        --break-system-package
+
+RUN update-alternatives --install /usr/bin/gcc              gcc          /usr/bin/gcc-14          10 \
+    && update-alternatives --install /usr/bin/g++           g++          /usr/bin/g++-14          10 \
+    && update-alternatives --install /usr/bin/clang++       clang++      /usr/bin/clang++-18      10 \
+    && update-alternatives --install /usr/bin/clang         clang        /usr/bin/clang-18        10 \
+    && update-alternatives --install /usr/bin/clang-tidy    clang-tidy   /usr/bin/clang-tidy-18   10 \
+    && update-alternatives --install /usr/bin/cc            cc           /usr/bin/gcc-14          10 \
+    && update-alternatives --install /usr/bin/c++           c++          /usr/bin/g++-14          10
+
+
+
+RUN chown -R nonroot:nonroot /opt/codechecker
+USER nonroot
+
+RUN git clone https://github.com/ThibFrgsGmz/BazelLab.git \
+    && cd BazelLab/ \
+    && bazel run :refresh_compile_commands 
+
+RUN CodeChecker analyze /opt/codechecker/BazelLab/compile_commands.json  --output ./codechecker --jobs $(nproc) 
+
+RUN CodeChecker cmd diff --new --url "http://localhost:8001/Default" \
+                    --basename "MR Diff"  \
+                    --newname " /opt/codechecker/BazelLab/codechecker"
+
+
+

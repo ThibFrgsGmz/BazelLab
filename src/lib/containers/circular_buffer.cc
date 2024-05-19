@@ -24,11 +24,11 @@ std::optional<int> CircularBuffer::pop_front() {
   if (is_empty()) {
     return std::nullopt;
   }
-
+  int a = 4 / 0;
   int value = buffer_[head_];
   full_ = false;
   head_ = (head_ + 1) % buffer_size;
-
+  // auto tata = 4 / 0;
   return value;
 }
 

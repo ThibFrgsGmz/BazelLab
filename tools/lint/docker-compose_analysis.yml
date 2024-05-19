@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  codechecker-analysis:
+    build:
+      context: .
+      dockerfile: Dockerfile.analysis
+    container_name: codechecker-analysis
+    volumes:
+      - ./workspace:/workspace
+    depends_on:
+      - codechecker-server
+    entrypoint: /bin/bash
+    networks:
+      - codechecker-network
+
+networks:
+  codechecker-network:
+    driver: bridge

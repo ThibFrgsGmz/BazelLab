@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 6,
-  "moduleFileHash": "992ebd02a8364761504955b28f43aaa8d4b998543caba363b2e994a85e29601b",
+  "moduleFileHash": "c22a6ef90386bbd325bafabbfdc90660f5356c9d3c4b936852e29cf75e8fabaf",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -36,28 +36,10 @@
             "column": 0
           },
           "imports": {
-            "bazel_clang_tidy": "bazel_clang_tidy",
             "com_intel_cib": "com_intel_cib"
           },
           "devImports": [],
           "tags": [
-            {
-              "tagName": "@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
-              "attributeValues": {
-                "sha256": "89c198a9f544beac119bb41904d16d8870686ccb5fe946442c1576934c9e6869",
-                "strip_prefix": "bazel_clang_tidy-d2aecc583d14c9554febeab185833c1e8cce5384",
-                "urls": [
-                  "https://github.com/erenon/bazel_clang_tidy/archive/d2aecc583d14c9554febeab185833c1e8cce5384.tar.gz"
-                ],
-                "name": "bazel_clang_tidy"
-              },
-              "devDependency": false,
-              "location": {
-                "file": "@@//:MODULE.bazel",
-                "line": 44,
-                "column": 13
-              }
-            },
             {
               "tagName": "@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
               "attributeValues": {
@@ -70,7 +52,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 82,
+                "line": 71,
                 "column": 13
               }
             }
@@ -84,7 +66,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 62,
+            "line": 52,
             "column": 23
           },
           "imports": {
@@ -102,7 +84,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 63,
+                "line": 53,
                 "column": 17
               }
             }
@@ -116,7 +98,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 72,
+            "line": 62,
             "column": 20
           },
           "imports": {
@@ -134,7 +116,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 73,
+                "line": 63,
                 "column": 10
               }
             }
