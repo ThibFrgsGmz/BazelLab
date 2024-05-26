@@ -49,19 +49,17 @@
 			"*.h": "cpp",
 			"*.hpp": "cpp",
 			"*.cc": "cpp",
-			// ".bazelrc": "python",
-			// ".bazeliskrc": "python"
 		},
 		"C_Cpp.default.cppStandard": "c++20",
 		"C_Cpp.default.compilerPath": "/usr/bin/g++",
 		"C_Cpp.default.intelliSenseMode": "gcc-x64",
 		"C_Cpp.default.includePath": [
 			"${workspaceFolder}/**",
-			"${workspaceFolder}/bazel-BazelLab/external/**"
+			"${workspaceFolder}/external/**"
 		],
 		"C_Cpp.default.browse.path": [
 			"${workspaceFolder}",
-			"${workspaceFolder}/bazel-BazelLab/external/**"
+			"${workspaceFolder}/external/**"
 		],
 		"C_Cpp.default.defines": [],
 		"C_Cpp.errorSquiggles": "enabled",
@@ -85,7 +83,8 @@
 		"editor.tabSize": 4,
 		"files.insertFinalNewline": true,
 		"files.trimTrailingWhitespace": true,
-		"sarif-viewer.connectToGithubCodeScanning": "off"
+		"sarif-viewer.connectToGithubCodeScanning": "off",
+		"explorer.excludeGitIgnore": false
 	},
 	// Configurations de lancement
 	"launch": {
@@ -95,7 +94,6 @@
 				"name": "Launch Bazel Build",
 				"type": "cppdbg",
 				"request": "launch",
-				"program": "${workspaceFolder}/bazel-bin/<your-target-path>",
 				"args": [],
 				"stopAtEntry": false,
 				"cwd": "${workspaceFolder}",
@@ -109,7 +107,7 @@
 						"ignoreFailures": true
 					}
 				],
-				"preLaunchTask": "bazel-build",
+				"preLaunchTask": "Check test",
 				"miDebuggerPath": "/usr/bin/gdb"
 			}
 		]
