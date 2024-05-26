@@ -1,36 +1,46 @@
-# Force the use of Clang for all builds. FuzzTest relies on Clang for sanitizer
-# coverage (https://clang.llvm.org/docs/SanitizerCoverage.html).
-build --action_env=CC=clang
-build --action_env=CXX=clang++
-
-# build --cxxopt=-fdiagnostics-format=sarif-stderr
 
 build:codechecker --run_under="CodeChecker analyze"
 
-# Use the C++17 standard.
-build --cxxopt=-std=c++17
-build --linkopt=-fuse-ld=mold
+build --compiler='clang-18'
 
-# Use the builtin crc32 for fast integer hashing.
-build --copt=-mcrc32
+build --copt='-Wall'
+build --copt='-Wextra'
+build --copt='-Wpedantic'
 
-# Show everything when running tests.
-test --test_output=streamed
+build --cxxopt='-std=c++20'
+build --cxxopt='-Wno-delete-non-abstract-non-virtual-dtor'
+build --cxxopt='-Wno-self-assign-overloaded'
+build --cxxopt='-Wno-self-move'
+
+build --linkopt='-fuse-ld=mold'
+
+# build --copt='-Werror'
+build --copt='-fno-exceptions'
+build --copt='-ftemplate-backtrace-limit=0'
+build --copt='-ftrivial-auto-var-init=pattern'
+
+build --copt='-Weverything'
+# Disables C++98 to C++17 compatibility enforcement
+build --copt='-Wno-c++98-compat-pedantic'
+# Re-enable, as it is disabled by the previous one
+build --copt='-Wc++98-compat-extra-semi'
+
+# Force the use of Clang for all builds. FuzzTest relies on Clang for sanitizer
+# coverage (https://clang.llvm.org/docs/SanitizerCoverage.html).
+common --action_env=CC='clang'
+common --action_env=CXX='clang++'
 
 # Silence all C/C++ warnings in external code.
 #
 # Note that this will not silence warnings from external headers #include'd in
 # first-party code.
-common --per_file_copt=external/.*@-w
-common --host_per_file_copt=external/.*@-w
+build --per_file_copt='external/.*@-g0,-O3,-fno-sanitize=all,-fexceptions'
+build --per_file_copt='external/.*@-Wno-everything,-ftrivial-auto-var-init=uninitialized'
+build --per_file_copt='external/.*@-w'
+build --host_per_file_copt='external/.*@-w'
 
-# Silence compiler warnings from external repositories.
-#
-# This is supported by Bazel's default C++ toolchain, but not yet by
-# rules_cc_toolchain
-# (https://github.com/bazelembedded/rules_cc_toolchain/issues/46).
-build --features=external_include_paths
-
+# Show everything when running tests.
+test --test_output=streamed
 
 # Define the Fuzzer configuration.
 build:asan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine=@rules_fuzzing//fuzzing/engines:libfuzzer
@@ -40,6 +50,36 @@ build:asan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_sanitizer=asan
 build:ubsan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine=@rules_fuzzing//fuzzing/engines:libfuzzer
 build:ubsan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_instrumentation=libfuzzer
 build:ubsan-libfuzzer --@rules_fuzzing//fuzzing:cc_engine_sanitizer=ubsan
+
+# Define the Sanitizers configuration.
+build:asan --strip=never
+build:asan --copt -fsanitize=address
+build:asan --copt -DADDRESS_SANITIZER
+build:asan --copt -fno-sanitize-recover=all
+build:asan --copt -O1
+build:asan --copt -g
+build:asan --copt -fno-omit-frame-pointer
+build:asan --linkopt -fsanitize=address
+
+build:ubsan --strip=never
+build:ubsan --copt -fsanitize=undefined
+build:ubsan --copt -fno-sanitize-recover=all
+build:ubsan --copt -O1
+build:ubsan --copt -g
+build:ubsan --copt -fno-omit-frame-pointer
+build:ubsan --linkopt -fsanitize=undefined
+
+build:tsan --strip=never
+build:tsan --copt -fsanitize=thread
+build:tsan --copt -fno-sanitize-recover=all
+build:tsan --copt -O1
+build:tsan --copt -g
+build:tsan --copt -fno-omit-frame-pointer
+build:tsan --linkopt -fsanitize=thread
+
+build:san --copt -fsanitize=address,undefined
+build:san --linkopt -fsanitize=address,undefined
+build:san --linkopt -fsanitize-link-c++-runtime
 
 # Required for combined code coverage reports.
 coverage --experimental_generate_llvm_lcov
