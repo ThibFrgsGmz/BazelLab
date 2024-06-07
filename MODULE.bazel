@@ -75,3 +75,10 @@ http_archive(
     strip_prefix = "compile-time-init-build-1.7.0",
     url = "https://github.com/intel/compile-time-init-build/archive/refs/tags/v1.7.0.tar.gz",
 )
+
+http_archive(
+    name = "com_tesla_fixed-containers",
+    sha256 = "6d96d05d5f3c8d1c21083afcfe039df798eebf9c80265a224ea39a4bb7c68173",
+    strip_prefix = "fixed-containers-feat-bzlmod",
+    url = "https://github.com/ThibFrgsGmz/fixed-containers/archive/refs/heads/feat/bzlmod.tar.gz",
+)

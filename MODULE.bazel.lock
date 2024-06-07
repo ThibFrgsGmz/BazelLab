@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 6,
-  "moduleFileHash": "c22a6ef90386bbd325bafabbfdc90660f5356c9d3c4b936852e29cf75e8fabaf",
+  "moduleFileHash": "2c7002caf74158af58954b71094cd0215eac03d68ba70f945ccb0dd95f1b6439",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -36,7 +36,8 @@
             "column": 0
           },
           "imports": {
-            "com_intel_cib": "com_intel_cib"
+            "com_intel_cib": "com_intel_cib",
+            "com_tesla_fixed-containers": "com_tesla_fixed-containers"
           },
           "devImports": [],
           "tags": [
@@ -53,6 +54,21 @@
               "location": {
                 "file": "@@//:MODULE.bazel",
                 "line": 71,
+                "column": 13
+              }
+            },
+            {
+              "tagName": "@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
+              "attributeValues": {
+                "sha256": "6d96d05d5f3c8d1c21083afcfe039df798eebf9c80265a224ea39a4bb7c68173",
+                "strip_prefix": "fixed-containers-feat-bzlmod",
+                "url": "https://github.com/ThibFrgsGmz/fixed-containers/archive/refs/heads/feat/bzlmod.tar.gz",
+                "name": "com_tesla_fixed-containers"
+              },
+              "devDependency": false,
+              "location": {
+                "file": "@@//:MODULE.bazel",
+                "line": 79,
                 "column": 13
               }
             }

@@ -1,6 +1,18 @@
 #include "circular_buffer.h"
 
 #include <gtest/gtest.h>
+#include "fixed_containers/concepts.hpp"
+#include <fixed_containers/fixed_vector.hpp>
+
+
+using VecType = fixed_containers::FixedVector<int, 5>;
+
+
+template <class T>
+concept TriviallyCopyable = std::is_trivially_copyable_v<T>;
+
+static_assert(TriviallyCopyable<VecType>);
+
 
 // Test fixture for CircularBuffer class
 class CircularBufferTest : public ::testing::Test {

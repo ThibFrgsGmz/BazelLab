@@ -13,6 +13,7 @@ cc_test(
     deps = [
         ":circular_buffer",
         "@googletest//:gtest",
+        "@com_tesla_fixed-containers//:fixed_vector",
         "@googletest//:gtest_main",
     ],
 )
