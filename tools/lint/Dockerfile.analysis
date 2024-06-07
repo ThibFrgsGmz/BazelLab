@@ -6,10 +6,20 @@ WORKDIR /opt/codechecker
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN useradd -ms /bin/bash nonroot
-RUN chmod -R +rwx /opt/codechecker
+ARG USERNAME=nonroot
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
 
-# # Met à jour les paquets disponibles dans le système et installe les dépendances nécessaires
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    # Add sudo support to install software after connecting.
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
+RUN chown -R $USERNAME:$USERNAME /opt/codechecker
+
 RUN apt-get update \
     && apt-get install -y \
         software-properties-common \
@@ -61,10 +71,7 @@ RUN update-alternatives --install /usr/bin/gcc              gcc          /usr/bi
     && update-alternatives --install /usr/bin/cc            cc           /usr/bin/gcc-14          10 \
     && update-alternatives --install /usr/bin/c++           c++          /usr/bin/g++-14          10
 
-
-
-RUN chown -R nonroot:nonroot /opt/codechecker
-USER nonroot
+USER $USERNAME
 
 RUN git clone https://github.com/ThibFrgsGmz/BazelLab.git \
     && cd BazelLab/ \
