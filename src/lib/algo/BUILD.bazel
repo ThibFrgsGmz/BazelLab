@@ -1,0 +1,19 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+load("@rules_fuzzing//fuzzing:cc_defs.bzl", "cc_fuzz_test")
+
+cc_library(
+    name = "algo",
+    srcs = [],
+    hdrs = ["RampController.hpp"],
+)
+
+cc_test(
+    name = "algo_test",
+    srcs = ["RampController.test.cc"],
+    copts = ["-Wno-global-constructors"],
+    deps = [
+        ":algo",
+        "@googletest//:gtest",
+        "@googletest//:gtest_main",
+    ],
+)
